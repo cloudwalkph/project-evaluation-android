@@ -19,6 +19,11 @@
         <item name="colorControlActivated">@color/rb_color1</item>
     </style>
 
+    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/Montserrat-Bold.ttf</item>
+    </style>
+
     <!--Buttons-->
     <style name="CustomButtons" parent="Theme.AppCompat.Light">
         <item name="android:textColor">@color/white</item>

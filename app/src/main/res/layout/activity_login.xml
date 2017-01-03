@@ -48,8 +48,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
+                    android:textAppearance="@style/TextAppearance.FontPath"
                     android:singleLine="true"
                     android:nextFocusDown="@+id/et_password"/>
 
@@ -64,8 +66,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
                     android:hint="@string/prompt_password"
                     android:inputType="textPassword"
+                    android:textAppearance="@style/TextAppearance.FontPath"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -81,10 +85,11 @@
 
         <Button
             android:id="@+id/btn_log_in"
+            android:theme="@style/PrimaryButton"
+            android:textAppearance="@style/TextAppearance.FontPath"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="bottom"
-            android:theme="@style/PrimaryButton"
             android:textAllCaps="false"
             android:textSize="28sp"
             android:text="Log In"/>
