@@ -7,6 +7,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="preEventToolBar">#8a2adb</color>
+    <color name="eventProperToolBar">#ef8d0f</color>
 
     <color name="accountsColor">#7030a0</color>
     <color name="cmtuvaColor">#ff6600</color>
