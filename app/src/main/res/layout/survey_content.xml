@@ -84,7 +84,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1. The quick brown fox jumps over the lazy dog"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="1. The quick brown fox jumps over the lazy dog."
             android:textSize="20dp"
             android:textAppearance="@style/montserratBold"
             />
