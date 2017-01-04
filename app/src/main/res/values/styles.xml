@@ -34,6 +34,11 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="WhiteButton" parent="CustomButtons">
+        <item name="colorControlHighlight">@color/grey_300</item>
+        <item name="colorButtonNormal">@color/white</item>
+    </style>
+
     <style name="PrimaryButton" parent="CustomButtons">
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="colorButtonNormal">@color/orange_600</item>

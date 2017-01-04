@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/preEventToolBar"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="?attr/actionBarSize"
+            layout_scrollFlags="scroll|enterAlways" />
 
+        <LinearLayout
+            android:id="@+id/ll_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:orientation="vertical"
+            android:paddingRight="50dp"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/header_events_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dove School Event"
+                android:textSize="30dp"
+                android:textAppearance="@style/montserratBold"
+                android:textColor="@android:color/white"/>
+            <TextView
+                android:id="@+id/header_department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Accounts"
+                android:textSize="30dp"
+                android:textAppearance="@style/montserrat"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -72,4 +114,4 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
