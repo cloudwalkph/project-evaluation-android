@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.data.local.models.Event;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -14,11 +15,13 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class EventProperActivity extends AppCompatActivity {
 
+    public static Event mCurrentEvent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_proper);
-        setTitle("Event name");
+        setTitle(mCurrentEvent.getName());
     }
 
     @Override

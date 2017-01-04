@@ -104,6 +104,9 @@ public class EventsAdapter extends
         public void onClick(View view) {
             int position = getAdapterPosition(); // gets item position
 
+            Event event = mEvents.get(position);
+
+            EventProperActivity.mCurrentEvent = event;
             Intent intent = new Intent(getContext(), EventProperActivity.class);
             getContext().startActivity(intent);
         }

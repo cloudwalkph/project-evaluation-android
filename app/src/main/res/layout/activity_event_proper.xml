@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:paddingLeft="95dp"
+        android:textAlignment="center">
 
         <ImageView
             android:layout_width="100dp"
@@ -21,10 +21,13 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/montserratBold"
             android:text="Pre Event"
-            android:layout_marginLeft="20dp"
-            android:textSize="50sp"/>
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginLeft="60dp"
+            android:textSize="40sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -32,8 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:paddingLeft="95dp"
+        android:textAlignment="center">
 
         <ImageView
             android:layout_width="100dp"
@@ -42,10 +45,13 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/montserratBold"
             android:text="Event Proper"
-            android:layout_marginLeft="20dp"
-            android:textSize="50sp"/>
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginLeft="60dp"
+            android:textSize="40sp"/>
 
     </LinearLayout>
 
@@ -54,18 +60,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_gravity="left"
-        android:gravity="center">
+        android:paddingLeft="95dp"
+        android:textAlignment="center">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:src="@drawable/post_event" />
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:textAppearance="@style/montserratBold"
+            android:textColor="@color/black"
             android:text="Post Event"
-            android:layout_marginLeft="20dp"
-            android:textSize="50sp"/>
+            android:gravity="center"
+            android:layout_marginLeft="60dp"
+            android:textSize="40sp"/>
 
     </LinearLayout>
 
