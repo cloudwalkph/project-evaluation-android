@@ -51,7 +51,7 @@
                     android:paddingRight="20dp"
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
-                    android:textAppearance="@style/TextAppearance.FontPath"
+                    android:textAppearance="@style/montserrat"
                     android:singleLine="true"
                     android:nextFocusDown="@+id/et_password"/>
 
@@ -69,7 +69,7 @@
                     android:paddingRight="20dp"
                     android:hint="@string/prompt_password"
                     android:inputType="textPassword"
-                    android:textAppearance="@style/TextAppearance.FontPath"
+                    android:textAppearance="@style/montserrat"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -86,7 +86,7 @@
         <Button
             android:id="@+id/btn_log_in"
             android:theme="@style/PrimaryButton"
-            android:textAppearance="@style/TextAppearance.FontPath"
+            android:textAppearance="@style/montserratBold"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="bottom"

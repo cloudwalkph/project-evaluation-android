@@ -19,9 +19,14 @@
         <item name="colorControlActivated">@color/rb_color1</item>
     </style>
 
-    <style name="TextAppearance.FontPath" parent="android:TextAppearance">
+    <style name="montserratBold" parent="android:TextAppearance">
         <!-- Custom Attr-->
         <item name="fontPath">fonts/Montserrat-Bold.ttf</item>
+    </style>
+
+    <style name="montserrat" parent="android:TextAppearance">
+        <!-- Custom Attr-->
+        <item name="fontPath">fonts/Montserrat-Regular.ttf</item>
     </style>
 
     <!--Buttons-->
