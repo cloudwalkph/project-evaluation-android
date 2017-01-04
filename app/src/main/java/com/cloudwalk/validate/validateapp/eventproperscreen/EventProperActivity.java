@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.eventpropersurveyscreen.EventProperSurveyActivity;
 import com.cloudwalk.validate.validateapp.preeventsurveyscreen.PreEventSurveyActivity;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -21,6 +22,7 @@ public class EventProperActivity extends AppCompatActivity {
 
     public static Event mCurrentEvent;
     public LinearLayout mPreEventLayout;
+    public LinearLayout mEventProperLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,15 @@ public class EventProperActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), PreEventSurveyActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mEventProperLayout = (LinearLayout) findViewById(R.id.ll_event_proper);
+        mEventProperLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EventProperSurveyActivity.class);
                 startActivity(intent);
             }
         });
