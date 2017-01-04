@@ -1,6 +1,7 @@
 package com.cloudwalk.validate.validateapp.mainscreen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 
 import java.util.List;
 
@@ -22,26 +24,6 @@ import butterknife.BindView;
 
 public class EventsAdapter extends
             RecyclerView.Adapter<EventsAdapter.ViewHolder> {
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
-        public TextView nameTextView;
-        public TextView jobTextView;
-        public TextView dateTextView;
-
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
-        public ViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
-            super(itemView);
-
-            nameTextView = (TextView) itemView.findViewById(R.id.event_name);
-            jobTextView = (TextView) itemView.findViewById(R.id.job_title);
-            dateTextView = (TextView) itemView.findViewById(R.id.event_date);
-        }
-    }
 
     // Store a member variable for the contacts
     private List<Event> mEvents;
@@ -94,6 +76,37 @@ public class EventsAdapter extends
     @Override
     public int getItemCount() {
         return mEvents.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        // Your holder should contain a member variable
+        // for any view that will be set as you render a row
+        public TextView nameTextView;
+        public TextView jobTextView;
+        public TextView dateTextView;
+
+        // We also create a constructor that accepts the entire item row
+        // and does the view lookups to find each subview
+        public ViewHolder(View itemView) {
+            // Stores the itemView in a public final member variable that can be used
+            // to access the context from any ViewHolder instance.
+            super(itemView);
+
+            nameTextView = (TextView) itemView.findViewById(R.id.event_name);
+            jobTextView = (TextView) itemView.findViewById(R.id.job_title);
+            dateTextView = (TextView) itemView.findViewById(R.id.event_date);
+
+            itemView.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition(); // gets item position
+
+            Intent intent = new Intent(getContext(), EventProperActivity.class);
+            getContext().startActivity(intent);
+        }
     }
 
 

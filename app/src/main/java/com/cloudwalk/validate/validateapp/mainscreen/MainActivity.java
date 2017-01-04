@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
@@ -20,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Event> contacts;
     @BindView(R.id.rv_events) RecyclerView mRvEvents;
-
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -36,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         EventsAdapter adapter = new EventsAdapter(this, contacts);
         mRvEvents.setAdapter(adapter);
         mRvEvents.setLayoutManager(new LinearLayoutManager(this));
+
     }
 
     @Override
