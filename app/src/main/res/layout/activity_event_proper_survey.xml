@@ -49,7 +49,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/pre_event_survey_content" />
+    <include layout="@layout/event_proper_survey_content" />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package com.cloudwalk.validate.validateapp.preeventsurveyscreen;
+package com.cloudwalk.validate.validateapp.eventpropersurveyscreen;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +9,12 @@ import com.cloudwalk.validate.validateapp.R;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class PreEventSurveyActivity extends AppCompatActivity {
+public class EventProperSurveyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pre_event_survey);
+        setContentView(R.layout.activity_event_proper_survey);
         setTitle("");
 
         // toolbar
