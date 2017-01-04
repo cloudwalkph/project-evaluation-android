@@ -39,6 +39,11 @@
         <item name="colorButtonNormal">@color/white</item>
     </style>
 
+    <style name="BlueButton" parent="CustomButtons">
+        <item name="colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+    </style>
+
     <style name="PrimaryButton" parent="CustomButtons">
         <item name="colorControlHighlight">@color/colorAccent</item>
         <item name="colorButtonNormal">@color/orange_600</item>
