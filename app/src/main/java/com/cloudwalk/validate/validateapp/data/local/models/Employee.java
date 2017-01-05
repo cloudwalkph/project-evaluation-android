@@ -1,6 +1,7 @@
 package com.cloudwalk.validate.validateapp.data.local.models;
 
 import com.cloudwalk.validate.validateapp.data.local.DatabaseContract;
+import com.google.gson.annotations.SerializedName;
 import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverColumn;
 import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverType;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
@@ -15,26 +16,32 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 public class Employee {
     @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_ID, key = true)
     @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_ID, key = true)
+    @SerializedName("_id")
     protected long id;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_FNAME)
     @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_FNAME)
+    @SerializedName("emp_fname")
     protected String fname;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_LNAME)
     @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_LNAME)
+    @SerializedName("emp_lname")
     protected String lname;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_EMAIL)
     @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_EMAIL)
+    @SerializedName("emp_email")
     protected String email;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_DEPARTMENT)
     @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_DEPARTMENT)
+    @SerializedName("emp_dept")
     protected String department;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_PASSWORD)
     @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_PASSWORD)
+    @SerializedName("emp_pass")
     protected String password = "12345";
 
     public String getFname() {
