@@ -71,5 +71,24 @@ public class DatabaseContract {
         public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_DEPARTMENT = "department";
         public static final String COLUMN_PASSWORD = "password";
+
+        public static String getEmployeeCreateQuery() {
+            return "CREATE TABLE " + TABLE_NAME + " (" +
+                    COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
+                    COLUMN_FNAME + " TEXT NOT NULL , " +
+                    COLUMN_LNAME + " TEXT NOT NULL, " +
+                    COLUMN_EMAIL + " TEXT NOT NULL" +
+                    COLUMN_DEPARTMENT + " TEXT NOT NULL, " +
+                    COLUMN_PASSWORD + " TEXT NOT NULL" + ");";
+        }
+
+        public static String getEmployeeDeleteQuery() {
+            return "DROP TABLE IF EXISTS " + TABLE_NAME;
+        }
+
+
+        public static Uri buildEmployeeUri(long id) {
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
     }
 }
