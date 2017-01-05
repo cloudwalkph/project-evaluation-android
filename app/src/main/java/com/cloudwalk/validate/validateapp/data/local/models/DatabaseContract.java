@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
 
 public class DatabaseContract {
 
-    public static final String CONTENT_AUTHORITY = "com.ladwa.aditya.offlinefirstapp";
+    public static final String CONTENT_AUTHORITY = "com.cloudwalk.validate.validateapp";
     private static final String CONTENT_SCHEME = "content://";
     public static final Uri BASE_CONTENT_URI = Uri.parse(CONTENT_SCHEME + CONTENT_AUTHORITY);
 
