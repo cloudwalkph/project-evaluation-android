@@ -28,4 +28,8 @@ public class AppLocalDataStore {
     public void savePostToDatabase(List posts) {
         mStorIOContentResolver.put().objects(posts).prepare().executeAsBlocking();
     }
+
+    public void saveEmployeeToDatabase(List employees) {
+        mStorIOContentResolver.put().objects(employees).prepare().executeAsBlocking();
+    }
 }

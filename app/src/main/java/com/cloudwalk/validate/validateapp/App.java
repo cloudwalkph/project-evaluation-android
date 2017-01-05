@@ -2,6 +2,7 @@ package com.cloudwalk.validate.validateapp;
 
 import android.app.Application;
 import com.cloudwalk.validate.validateapp.dagger.component.AppComponent;
+import com.cloudwalk.validate.validateapp.dagger.component.DaggerAppComponent;
 import com.cloudwalk.validate.validateapp.dagger.module.AppModule;
 import com.cloudwalk.validate.validateapp.dagger.module.DataModule;
 
@@ -15,6 +16,11 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mAppComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .dataModule(new DataModule("http://jsonplaceholder.typicode.com/"))
+                .build();
     }
 
 
