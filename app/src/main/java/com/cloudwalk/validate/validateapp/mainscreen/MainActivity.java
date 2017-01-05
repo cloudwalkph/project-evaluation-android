@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView mRvEvents = (RecyclerView) findViewById(R.id.rv_events);
 
         // Initialize contacts
-        contacts = Event.createEventList();
+//        contacts = Event.createEventList();
         EventsAdapter adapter = new EventsAdapter(this, contacts);
         mRvEvents.setAdapter(adapter);
         mRvEvents.setLayoutManager(new LinearLayoutManager(this));

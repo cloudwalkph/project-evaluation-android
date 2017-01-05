@@ -183,22 +183,36 @@ public class Event {
         this.inputDate = InputDate;
     }
 
-    public Event(String name, String jonum, String eventdate) {
-        this.name = name;
-        this.jonum = jonum;
-        this.eventdate = eventdate;
-    }
+//    public Event(long id, String name, String jonum, String eventdate,
+//                 String eventarea, String postdate, String predate, String eventtime,
+//                 String evaluator, String tls, String nego, String activationsDate,
+//                 String endDate, String inputDate) {
+//        this.id = id;
+//        this.name = name;
+//        this.jonum = jonum;
+//        this.eventdate = eventdate;
+//        this.eventarea = eventarea;
+//        this.postdate = postdate;
+//        this.predate = predate;
+//        this.eventtime = eventtime;
+//        this.evaluator = evaluator;
+//        this.tls = tls;
+//        this.nego = nego;
+//        this.activationsDate = activationsDate;
+//        this.endDate = endDate;
+//        this.inputDate = inputDate;
+//    }
 
-    public static ArrayList<Event> createEventList() {
-        ArrayList<Event> events = new ArrayList<Event>();
-
-        events.add(new Event("Ponds School Event", "201710001", "January 21, 2017"));
-        events.add(new Event("Smart School Event", "201710002", "January 30, 2017"));
-        events.add(new Event("Unilever School Event", "201710003", "February 02, 2017"));
-        events.add(new Event("Globe School Event", "201710004", "March 16, 2017"));
-        events.add(new Event("Sun School Event", "201710005", "June 03, 2017"));
-        events.add(new Event("Test School Event", "201710006", "June 12, 2017"));
-
-        return events;
-    }
+//    public static ArrayList<Event> createEventList() {
+//        ArrayList<Event> events = new ArrayList<Event>();
+//
+//        events.add(new Event("Ponds School Event", "201710001", "January 21, 2017"));
+//        events.add(new Event("Smart School Event", "201710002", "January 30, 2017"));
+//        events.add(new Event("Unilever School Event", "201710003", "February 02, 2017"));
+//        events.add(new Event("Globe School Event", "201710004", "March 16, 2017"));
+//        events.add(new Event("Sun School Event", "201710005", "June 03, 2017"));
+//        events.add(new Event("Test School Event", "201710006", "June 12, 2017"));
+//
+//        return events;
+//    }
 }
