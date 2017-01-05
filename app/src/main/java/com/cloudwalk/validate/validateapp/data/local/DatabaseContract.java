@@ -113,9 +113,7 @@ public class DatabaseContract {
         public static final String COLUMN_EVALUATOR = "evaluator";
         public static final String COLUMN_TLS = "tls";
         public static final String COLUMN_NEGO = "nego";
-        public static final String COLUMN_ACTIVATIONS_DATE = "activationsDate";
-        public static final String COLUMN_END_DATE = "endDate";
-        public static final String COLUMN_INPUT_DATE = "inputDate";
+        public static final String COLUMN_DATE_CREATED = "dateCreated";
 
         public static String getEventCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
@@ -130,9 +128,7 @@ public class DatabaseContract {
                     COLUMN_EVALUATOR + " TEXT NOT NULL, " +
                     COLUMN_TLS + " TEXT NOT NULL, " +
                     COLUMN_NEGO + " TEXT NOT NULL, " +
-                    COLUMN_ACTIVATIONS_DATE + " TEXT NOT NULL, " +
-                    COLUMN_END_DATE + " TEXT NOT NULL, " +
-                    COLUMN_INPUT_DATE + " TEXT NOT NULL" + ");";
+                    COLUMN_DATE_CREATED + " TEXT NOT NULL "+ ");";
         }
 
         public static String getEventDeleteQuery() {
