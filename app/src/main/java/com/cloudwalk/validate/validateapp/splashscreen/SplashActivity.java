@@ -13,6 +13,7 @@ import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.remote.AppRemoteDataStore;
 import com.cloudwalk.validate.validateapp.loginscreen.LoginActivity;
+import com.facebook.stetho.Stetho;
 
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        Stetho.initializeWithDefaults(this);
 
         //Inject dependency
         App.getAppComponent().inject(this);
