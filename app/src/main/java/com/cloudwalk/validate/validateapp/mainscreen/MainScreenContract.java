@@ -13,16 +13,9 @@ public class MainScreenContract {
 
     interface View extends BaseView {
 
-        void showPosts(List posts);
-
-        void showError(String message);
-
-        void showComplete();
     }
 
     interface Presenter extends BasePresenter {
-        void loadPost();
 
-        void loadPostFromRemoteDatatore();
     }
 }

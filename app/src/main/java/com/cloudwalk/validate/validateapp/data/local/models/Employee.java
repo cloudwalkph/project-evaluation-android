@@ -1,16 +1,41 @@
 package com.cloudwalk.validate.validateapp.data.local.models;
 
+import com.cloudwalk.validate.validateapp.data.local.DatabaseContract;
+import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverColumn;
+import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverType;
+import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
+import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
+
 /**
  * Created by nkmcheng on 05/01/2017.
  */
 
+@StorIOSQLiteType(table = DatabaseContract.Employee.TABLE_NAME)
+@StorIOContentResolverType(uri = DatabaseContract.Employee.CONTENT_URI_STRING)
 public class Employee {
-    private long id;
-    private String fname;
-    private String lname;
-    private String email;
-    private String department;
-    private String password = "12345";
+    @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_ID, key = true)
+    @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_ID, key = true)
+    protected long id;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_FNAME)
+    @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_FNAME)
+    protected String fname;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_LNAME)
+    @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_LNAME)
+    protected String lname;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_EMAIL)
+    @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_EMAIL)
+    protected String email;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_DEPARTMENT)
+    @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_DEPARTMENT)
+    protected String department;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Employee.COLUMN_PASSWORD)
+    @StorIOContentResolverColumn(name = DatabaseContract.Employee.COLUMN_PASSWORD)
+    protected String password = "12345";
 
     public String getFname() {
         return fname;
