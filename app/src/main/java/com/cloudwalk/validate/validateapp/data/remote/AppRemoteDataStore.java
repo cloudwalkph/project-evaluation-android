@@ -45,7 +45,7 @@ public class AppRemoteDataStore implements AppDataStore {
     }
 
     private interface EmployeeService {
-        @GET("/employees")
+        @GET("/admin/getAllEmployee")
         Observable<List<Employee>> getEmployeeList();
     }
 
