@@ -1,5 +1,11 @@
 package com.cloudwalk.validate.validateapp.data.local.models;
 
+import com.cloudwalk.validate.validateapp.data.local.DatabaseContract;
+import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverColumn;
+import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverType;
+import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
+import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,22 +13,65 @@ import java.util.Date;
  * Created by nkmcheng on 03/01/2017.
  */
 
+@StorIOSQLiteType(table = DatabaseContract.Event.TABLE_NAME)
+@StorIOContentResolverType(uri = DatabaseContract.Event.CONTENT_URI_STRING)
 public class Event {
 
-    public long id;
-    public String name;
-    public String jonum;
-    public String eventdate;
-    public String eventarea;
-    public String postdate;
-    public String predate;
-    public String eventtime;
-    public String evaluator;
-    public String tls;
-    public String nego;
-    public String activationsDate;
-    public String endDate;
-    public String inputDate;
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_ID, key = true)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_ID, key = true)
+    protected long id;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_NAME)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_NAME)
+    protected String name;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_JONUM)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_JONUM)
+    protected String jonum;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_DATE)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_DATE)
+    protected String eventdate;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_AREA)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_AREA)
+    protected String eventarea;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_POST_DATE)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_POST_DATE)
+    protected String postdate;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_PRE_DATE)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_PRE_DATE)
+    protected String predate;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_TIME)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_TIME)
+    protected String eventtime;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVALUATOR)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVALUATOR)
+    protected String evaluator;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_TLS)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_TLS)
+    protected String tls;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_NEGO)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_NEGO)
+    protected String nego;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_ACTIVATIONS_DATE)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_ACTIVATIONS_DATE)
+    protected String activationsDate;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_END_DATE)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_END_DATE)
+    protected String endDate;
+
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_INPUT_DATE)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_INPUT_DATE)
+    protected String inputDate;
 
     public String getPostdate() {
         return postdate;
