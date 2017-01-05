@@ -17,6 +17,8 @@ public class Provider extends ContentProvider {
 
     private static final int POST_ITEM = 100;
     private static final int POST_DIR = 101;
+    private static final int EMPLOYEE_ITEM = 102;
+    private static final int EMPLOYEE_DIR = 103;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private DatabaseHelper mDbHelper;
@@ -28,6 +30,9 @@ public class Provider extends ContentProvider {
 
         matcher.addURI(authority, DatabaseContract.PATH_POST + "/#", POST_ITEM);
         matcher.addURI(authority, DatabaseContract.PATH_POST, POST_DIR);
+
+        matcher.addURI(authority, DatabaseContract.PATH_EMPLOYEE + "/#", EMPLOYEE_ITEM);
+        matcher.addURI(authority, DatabaseContract.PATH_EMPLOYEE, EMPLOYEE_DIR);
 
         return matcher;
     }
@@ -65,6 +70,28 @@ public class Provider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case EMPLOYEE_DIR:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        DatabaseContract.Employee.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case EMPLOYEE_ITEM:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        DatabaseContract.Employee.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown Uri " + uri);
         }
@@ -82,6 +109,10 @@ public class Provider extends ContentProvider {
                 return DatabaseContract.Post.CONTENT_USER_ITEM_TYPE;
             case POST_DIR:
                 return DatabaseContract.Post.CONTENT_USER_TYPE;
+            case EMPLOYEE_ITEM:
+                return DatabaseContract.Employee.CONTENT_USER_ITEM_TYPE;
+            case EMPLOYEE_DIR:
+                return DatabaseContract.Employee.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -101,6 +132,14 @@ public class Provider extends ContentProvider {
                 else
                     throw new SQLException("Failed to insert row " + uri);
                 break;
+            case EMPLOYEE_DIR:
+                long employee_id = db.insert(DatabaseContract.Employee.TABLE_NAME, null, contentValues);
+                if (employee_id > 0) {
+                    returnUri = DatabaseContract.Employee.buildEmployeeUri(employee_id);
+                } else {
+                    throw new SQLException("Failed to insert row " + uri);
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -115,6 +154,9 @@ public class Provider extends ContentProvider {
         switch (sUriMatcher.match(uri)) {
             case POST_DIR:
                 rowsDeleted = db.delete(DatabaseContract.Post.TABLE_NAME, selection, selectionArgs);
+                break;
+            case EMPLOYEE_DIR:
+                rowsDeleted = db.delete(DatabaseContract.Employee.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
@@ -132,6 +174,9 @@ public class Provider extends ContentProvider {
             //Case for User
             case POST_DIR:
                 update = db.update(DatabaseContract.Post.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case EMPLOYEE_DIR:
+                update = db.update(DatabaseContract.Employee.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
