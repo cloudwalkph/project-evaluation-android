@@ -12,30 +12,30 @@ import android.widget.Button;
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public Button mBtnSignIn;
+    @BindView(R.id.btn_log_in) Button mBtnSignIn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
+    }
 
-        mBtnSignIn = (Button) findViewById(R.id.btn_log_in);
-        mBtnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                ProgressDialog pd = new ProgressDialog(LoginActivity.this);
-                pd.setMessage("loading");
-                pd.show();
-                startActivity(intent);
-                finish();
-            }
-        });
-
+    @OnClick(R.id.btn_log_in) void doLogin() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        ProgressDialog pd = new ProgressDialog(LoginActivity.this);
+        pd.setMessage("loading");
+        pd.show();
+        startActivity(intent);
+        finish();
     }
 
     @Override
