@@ -16,6 +16,7 @@ public class DatabaseContract {
     public static final Uri BASE_CONTENT_URI = Uri.parse(CONTENT_SCHEME + CONTENT_AUTHORITY);
 
     public static final String PATH_POST = "post";
+    public static final String PATH_EMPLOYEE = "employee";
 
     public DatabaseContract() {
     }
@@ -52,5 +53,21 @@ public class DatabaseContract {
         public static Uri buildUserUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
+    }
+
+    public static abstract class Employee implements BaseColumns {
+        @NonNull
+        public static final String CONTENT_URI_STRING = "content://" + CONTENT_AUTHORITY + "/" + PATH_EMPLOYEE;
+        public static final Uri CONTENT_URI = Uri.parse(CONTENT_URI_STRING);
+
+        public static final String CONTENT_USER_TYPE = "vnd.android.cursor.dir/" + CONTENT_AUTHORITY + "/" + PATH_EMPLOYEE;
+        public static final String CONTENT_USER_ITEM_TYPE = "vnd.android.cursor.item/" + CONTENT_AUTHORITY + "/" + PATH_EMPLOYEE;
+
+        public static final String TABLE_NAME = "employees";
+
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_USER_ID = "user_id";
+        public static final String COLUMN_TITLE = "title";
+        public static final String COLUMN_BODY = "body";
     }
 }
