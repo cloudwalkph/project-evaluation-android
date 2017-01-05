@@ -61,13 +61,13 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 .subscribe(new Observer<List<Employee>>() {
                     @Override
                     public void onCompleted() {
-                        Log.d(TAG, "Complete");
+                        Log.d("SPLASH", "Complete");
                         mView.showEmployeeCompleteSync();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d(TAG, e.toString());
+                        Log.d("SPLASH", e.toString());
                         mView.showError(e.toString());
                     }
 
