@@ -16,8 +16,6 @@ import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 
 import java.util.List;
 
-import butterknife.BindView;
-
 /**
  * Created by nkmcheng on 04/01/2017.
  */

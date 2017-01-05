@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.cloudwalk.validate.validateapp.App;
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
@@ -33,6 +34,9 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        //Inject dependency
+        App.getAppComponent().inject(this);
 
         new Handler().postDelayed(new Runnable(){
             @Override

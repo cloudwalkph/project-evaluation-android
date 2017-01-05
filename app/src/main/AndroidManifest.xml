@@ -4,12 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <provider
-        android:name=".data.local.Provider"
-        android:authorities="com.cloudwalk.validate.validateapp"
-        android:exported="false"
-        android:syncable="true" />
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -42,6 +36,13 @@
         <activity android:name=".eventpropersurveyscreen.EventProperSurveyActivity" />
         <activity android:name=".posteventsurveyscreen.PostEventSurveyActivity" />
         <activity android:name=".evaluationcompletescreen.EvaluationCompleteActivity" />
+
+
+        <provider
+            android:name=".data.local.Provider"
+            android:authorities="com.cloudwalk.validate.validateapp"
+            android:exported="false"
+            android:syncable="true" />
     </application>
 
 </manifest>
