@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "OfflineFirstApp.db";
+    public static final String DATABASE_NAME = "validate.db";
     public static final int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
@@ -19,13 +19,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(DatabaseContract.Post.getPostCreateQuery());
-
+//        sqLiteDatabase.execSQL(DatabaseContract.Post.getPostCreateQuery());
+        sqLiteDatabase.execSQL(DatabaseContract.Employee.getEmployeeCreateQuery());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(DatabaseContract.Post.getUserDeleteQuery());
+        sqLiteDatabase.execSQL(DatabaseContract.Employee.getEmployeeDeleteQuery());
         onCreate(sqLiteDatabase);
     }
 }
