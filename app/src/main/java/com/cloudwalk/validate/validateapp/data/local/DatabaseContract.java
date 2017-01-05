@@ -68,6 +68,7 @@ public class DatabaseContract {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_FNAME = "fname";
         public static final String COLUMN_LNAME = "lname";
+        public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_DEPARTMENT = "department";
         public static final String COLUMN_PASSWORD = "password";
     }
