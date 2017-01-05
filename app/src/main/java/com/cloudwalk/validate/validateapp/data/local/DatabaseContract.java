@@ -77,7 +77,7 @@ public class DatabaseContract {
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
                     COLUMN_FNAME + " TEXT NOT NULL , " +
                     COLUMN_LNAME + " TEXT NOT NULL, " +
-                    COLUMN_EMAIL + " TEXT NOT NULL" +
+                    COLUMN_EMAIL + " TEXT NOT NULL, " +
                     COLUMN_DEPARTMENT + " TEXT NOT NULL, " +
                     COLUMN_PASSWORD + " TEXT NOT NULL" + ");";
         }
@@ -122,15 +122,15 @@ public class DatabaseContract {
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
                     COLUMN_NAME + " TEXT NOT NULL , " +
                     COLUMN_JONUM + " TEXT NOT NULL, " +
-                    COLUMN_EVENT_DATE + " TEXT NOT NULL" +
+                    COLUMN_EVENT_DATE + " TEXT NOT NULL, " +
                     COLUMN_EVENT_AREA + " TEXT NOT NULL, " +
-                    COLUMN_POST_DATE + " TEXT NOT NULL" +
-                    COLUMN_PRE_DATE + " TEXT NOT NULL , " +
+                    COLUMN_POST_DATE + " TEXT NOT NULL, " +
+                    COLUMN_PRE_DATE + " TEXT NOT NULL, " +
                     COLUMN_EVENT_TIME + " TEXT NOT NULL, " +
-                    COLUMN_EVALUATOR + " TEXT NOT NULL" +
+                    COLUMN_EVALUATOR + " TEXT NOT NULL, " +
                     COLUMN_TLS + " TEXT NOT NULL, " +
-                    COLUMN_NEGO + " TEXT NOT NULL" +
-                    COLUMN_ACTIVATIONS_DATE + " TEXT NOT NULL" +
+                    COLUMN_NEGO + " TEXT NOT NULL, " +
+                    COLUMN_ACTIVATIONS_DATE + " TEXT NOT NULL, " +
                     COLUMN_END_DATE + " TEXT NOT NULL, " +
                     COLUMN_INPUT_DATE + " TEXT NOT NULL" + ");";
         }
