@@ -78,7 +78,7 @@ public class DataModule {
     @Provides
     @Singleton
     AppLocalDataStore porvidesAppLocalDataStore(Application context) {
-        return new AppLocalDataStore(context);
+        return new AppLocalDataStore();
     }
 
     @Provides
