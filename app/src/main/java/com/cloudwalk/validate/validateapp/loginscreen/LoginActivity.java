@@ -1,5 +1,6 @@
 package com.cloudwalk.validate.validateapp.loginscreen;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +28,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                ProgressDialog pd = new ProgressDialog(LoginActivity.this);
+                pd.setMessage("loading");
+                pd.show();
                 startActivity(intent);
+                finish();
             }
         });
 
