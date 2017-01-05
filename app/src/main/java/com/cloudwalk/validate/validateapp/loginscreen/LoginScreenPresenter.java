@@ -17,7 +17,7 @@ public class LoginScreenPresenter implements LoginScreenContract.Presenter {
     }
 
     @Override
-    public void attemptLogin() {
+    public void attemptLogin(String email, String password) {
 
     }
 

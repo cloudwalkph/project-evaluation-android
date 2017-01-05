@@ -14,6 +14,6 @@ public class LoginScreenContract {
     }
 
     interface Presenter extends BasePresenter {
-        void attemptLogin();
+        void attemptLogin(String email, String password);
     }
 }
