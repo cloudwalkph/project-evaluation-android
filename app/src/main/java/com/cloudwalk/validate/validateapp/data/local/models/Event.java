@@ -1,6 +1,7 @@
 package com.cloudwalk.validate.validateapp.data.local.models;
 
 import com.cloudwalk.validate.validateapp.data.local.DatabaseContract;
+import com.google.gson.annotations.SerializedName;
 import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverColumn;
 import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverType;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
@@ -19,34 +20,42 @@ public class Event {
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_ID, key = true)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_ID, key = true)
+    @SerializedName("_id")
     protected long id;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_NAME)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_NAME)
+    @SerializedName("e_name")
     protected String name;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_JONUM)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_JONUM)
+    @SerializedName("e_jo")
     protected String jonum;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_DATE)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_DATE)
+    @SerializedName("e_date")
     protected String eventdate;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_AREA)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_AREA)
+    @SerializedName("e_area")
     protected String eventarea;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_POST_DATE)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_POST_DATE)
+    @SerializedName("p_date")
     protected String postdate;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_PRE_DATE)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_PRE_DATE)
+    @SerializedName("pe_date")
     protected String predate;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_TIME)
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_TIME)
+    @SerializedName("e_time")
     protected String eventtime;
 
     @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVALUATOR)
@@ -61,17 +70,10 @@ public class Event {
     @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_NEGO)
     protected String nego;
 
-    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_ACTIVATIONS_DATE)
-    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_ACTIVATIONS_DATE)
-    protected String activationsDate;
-
-    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_END_DATE)
-    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_END_DATE)
-    protected String endDate;
-
-    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_INPUT_DATE)
-    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_INPUT_DATE)
-    protected String inputDate;
+    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_DATE_CREATED)
+    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_DATE_CREATED)
+    @SerializedName("datecreated")
+    protected String dateCreated;
 
     public String getPostdate() {
         return postdate;
@@ -159,28 +161,12 @@ public class Event {
         this.eventarea = eventarea;
     }
 
-    public String getActivationsDate() {
-        return activationsDate;
+    public String getDateCreated() {
+        return dateCreated;
     }
 
-    public void setActivationsDate(String activationsDate) {
-        this.activationsDate = activationsDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String EndDate) {
-        this.endDate = EndDate;
-    }
-
-    public String getInputDate() {
-        return inputDate;
-    }
-
-    public void setInputDate(String InputDate) {
-        this.inputDate = InputDate;
+    public void setInputDate(String datecreated) {
+        this.dateCreated = datecreated;
     }
 
 //    public Event(long id, String name, String jonum, String eventdate,
