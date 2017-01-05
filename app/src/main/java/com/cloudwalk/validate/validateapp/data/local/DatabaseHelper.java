@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DATABASE_NAME = "OfflineFirstApp.db";
+    public static final String DATABASE_NAME = "validate.db";
     public static final int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
