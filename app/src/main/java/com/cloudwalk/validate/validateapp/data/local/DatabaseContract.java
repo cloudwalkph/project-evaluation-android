@@ -71,5 +71,77 @@ public class DatabaseContract {
         public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_DEPARTMENT = "department";
         public static final String COLUMN_PASSWORD = "password";
+
+        public static String getEmployeeCreateQuery() {
+            return "CREATE TABLE " + TABLE_NAME + " (" +
+                    COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
+                    COLUMN_FNAME + " TEXT NOT NULL , " +
+                    COLUMN_LNAME + " TEXT NOT NULL, " +
+                    COLUMN_EMAIL + " TEXT NOT NULL" +
+                    COLUMN_DEPARTMENT + " TEXT NOT NULL, " +
+                    COLUMN_PASSWORD + " TEXT NOT NULL" + ");";
+        }
+
+        public static String getEmployeeDeleteQuery() {
+            return "DROP TABLE IF EXISTS " + TABLE_NAME;
+        }
+
+
+        public static Uri buildEmployeeUri(long id) {
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
+    }
+
+    public static abstract class Event implements BaseColumns {
+        @NonNull
+        public static final String CONTENT_URI_STRING = "content://" + CONTENT_AUTHORITY + "/" + PATH_EMPLOYEE;
+        public static final Uri CONTENT_URI = Uri.parse(CONTENT_URI_STRING);
+
+        public static final String CONTENT_USER_TYPE = "vnd.android.cursor.dir/" + CONTENT_AUTHORITY + "/" + PATH_EMPLOYEE;
+        public static final String CONTENT_USER_ITEM_TYPE = "vnd.android.cursor.item/" + CONTENT_AUTHORITY + "/" + PATH_EMPLOYEE;
+
+        public static final String TABLE_NAME = "events";
+
+        public static final String COLUMN_ID = "id";
+        public static final String COLUMN_NAME = "name";
+        public static final String COLUMN_JONUM = "jonum";
+        public static final String COLUMN_EVENT_DATE = "eventdate";
+        public static final String COLUMN_EVENT_AREA = "eventarea";
+        public static final String COLUMN_POST_DATE = "postdate";
+        public static final String COLUMN_PRE_DATE = "predate";
+        public static final String COLUMN_EVENT_TIME = "eventtime";
+        public static final String COLUMN_EVALUATOR = "evaluator";
+        public static final String COLUMN_TLS = "tls";
+        public static final String COLUMN_NEGO = "nego";
+        public static final String COLUMN_ACTIVATIONS_DATE = "activationsDate";
+        public static final String COLUMN_END_DATE = "endDate";
+        public static final String COLUMN_INPUT_DATE = "inputDate";
+
+        public static String getEventCreateQuery() {
+            return "CREATE TABLE " + TABLE_NAME + " (" +
+                    COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
+                    COLUMN_NAME + " TEXT NOT NULL , " +
+                    COLUMN_JONUM + " TEXT NOT NULL, " +
+                    COLUMN_EVENT_DATE + " TEXT NOT NULL" +
+                    COLUMN_EVENT_AREA + " TEXT NOT NULL, " +
+                    COLUMN_POST_DATE + " TEXT NOT NULL" +
+                    COLUMN_PRE_DATE + " TEXT NOT NULL , " +
+                    COLUMN_EVENT_TIME + " TEXT NOT NULL, " +
+                    COLUMN_EVALUATOR + " TEXT NOT NULL" +
+                    COLUMN_TLS + " TEXT NOT NULL, " +
+                    COLUMN_NEGO + " TEXT NOT NULL" +
+                    COLUMN_ACTIVATIONS_DATE + " TEXT NOT NULL" +
+                    COLUMN_END_DATE + " TEXT NOT NULL, " +
+                    COLUMN_INPUT_DATE + " TEXT NOT NULL" + ");";
+        }
+
+        public static String getEventDeleteQuery() {
+            return "DROP TABLE IF EXISTS " + TABLE_NAME;
+        }
+
+
+        public static Uri buildEventUri(long id) {
+            return ContentUris.withAppendedId(CONTENT_URI, id);
+        }
     }
 }

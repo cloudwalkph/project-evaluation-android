@@ -40,24 +40,24 @@
                 android:paddingBottom="15dp">
 
                 <TextView
-                    android:id="@+id/job_title_label"
+                    android:id="@+id/jo_num_label"
                     android:textAppearance="@style/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textSize="20sp"
                     android:textColor="#702a92db"
-                    android:text="JOB NO. "/>
+                    android:text="JO NO. "/>
 
                 <TextView
-                    android:id="@+id/job_title"
+                    android:id="@+id/jo_num"
                     android:textAppearance="@style/montserrat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textSize="20sp"
                     android:textColor="#702a92db"
-                    android:text="Job Title"/>
+                    android:text="Job Num"/>
 
             </LinearLayout>
 

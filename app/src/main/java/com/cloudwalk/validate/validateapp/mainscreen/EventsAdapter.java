@@ -65,11 +65,11 @@ public class EventsAdapter extends
         TextView nameTextView = viewHolder.nameTextView;
         nameTextView.setText(contact.getName());
 
-        TextView jobTextView = viewHolder.jobTextView;
-        jobTextView.setText(contact.getJob());
+        TextView jonumTextView = viewHolder.jonumTextView;
+        jonumTextView.setText(contact.getJonum());
 
         TextView dateTextView = viewHolder.dateTextView;
-        dateTextView.setText(contact.getDate());
+        dateTextView.setText(contact.getEventdate());
     }
 
     // Returns the total count of items in the list
@@ -82,7 +82,7 @@ public class EventsAdapter extends
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
         public TextView nameTextView;
-        public TextView jobTextView;
+        public TextView jonumTextView;
         public TextView dateTextView;
 
         // We also create a constructor that accepts the entire item row
@@ -93,7 +93,7 @@ public class EventsAdapter extends
             super(itemView);
 
             nameTextView = (TextView) itemView.findViewById(R.id.event_name);
-            jobTextView = (TextView) itemView.findViewById(R.id.job_title);
+            jonumTextView = (TextView) itemView.findViewById(R.id.jo_num);
             dateTextView = (TextView) itemView.findViewById(R.id.event_date);
 
             itemView.setOnClickListener(this);
