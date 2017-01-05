@@ -14,7 +14,8 @@ import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity
+    implements LoginScreenContract.View {
 
     public Button mBtnSignIn;
 
@@ -45,5 +46,20 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void loginComplete() {
+
+    }
+
+    @Override
+    public void loginFailed() {
+
+    }
+
+    @Override
+    public void setPresenter(LoginScreenContract.Presenter presenter) {
+
     }
 }

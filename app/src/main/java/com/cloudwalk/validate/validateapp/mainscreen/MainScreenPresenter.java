@@ -14,7 +14,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
     public MainScreenPresenter(MainScreenContract.View mView) {
         this.mView = mView;
-        mView.setPresenter(this);
+        this.mView.setPresenter(this);
     }
 
     @Override
