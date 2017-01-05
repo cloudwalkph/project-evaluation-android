@@ -1,4 +1,4 @@
-package com.cloudwalk.validate.validateapp.data.local.models;
+package com.cloudwalk.validate.validateapp.data.local;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

@@ -1,4 +1,4 @@
-package com.cloudwalk.validate.validateapp.data.local.models;
+package com.cloudwalk.validate.validateapp.data.local;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
