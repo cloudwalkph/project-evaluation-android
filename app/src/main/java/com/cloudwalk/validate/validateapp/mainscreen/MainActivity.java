@@ -11,13 +11,11 @@ import com.cloudwalk.validate.validateapp.data.local.models.Event;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Event> contacts;
-    @BindView(R.id.rv_events) RecyclerView mRvEvents;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
