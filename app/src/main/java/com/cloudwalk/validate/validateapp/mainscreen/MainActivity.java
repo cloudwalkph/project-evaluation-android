@@ -15,7 +15,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<Event> contacts;
+    ArrayList<Event> events;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView mRvEvents = (RecyclerView) findViewById(R.id.rv_events);
 
-        // Initialize contacts
-//        contacts = Event.createEventList();
-        EventsAdapter adapter = new EventsAdapter(this, contacts);
+        // Initialize events
+        events = Event.createEventList();
+        EventsAdapter adapter = new EventsAdapter(this, events);
         mRvEvents.setAdapter(adapter);
         mRvEvents.setLayoutManager(new LinearLayoutManager(this));
 
