@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_background"
-    tools:context="com.cloudwalk.validate.validateapp.SplashActivity">
+    tools:context="com.cloudwalk.validate.validateapp.splashscreen.SplashActivity">
 
     <ImageView
         android:layout_centerInParent="true"
