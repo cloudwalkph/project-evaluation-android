@@ -48,15 +48,15 @@ public class Question {
 //    @SerializedName("qsub")
     protected String qsub;
 
-//    List<AnswerModel> answers = new ArrayList<AnswerModel>();
-//
-//    public List<AnswerModel> getAnswers() {
-//        return answers;
-//    }
-//
-//    public void setAnswers(List<AnswerModel> answers) {
-//        this.answers = answers;
-//    }
+    List<Answer> answers = new ArrayList<Answer>();
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 
     public long getId() {
         return id;
