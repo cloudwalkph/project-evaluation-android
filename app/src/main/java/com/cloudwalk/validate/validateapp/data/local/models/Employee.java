@@ -14,6 +14,7 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 @StorIOSQLiteType(table = EmployeeDatabaseContract.Employee.TABLE_NAME)
 @StorIOContentResolverType(uri = EmployeeDatabaseContract.Employee.CONTENT_URI_STRING)
 public class Employee {
+
     @StorIOSQLiteColumn(name = EmployeeDatabaseContract.Employee.COLUMN_ID, key = true)
     @StorIOContentResolverColumn(name = EmployeeDatabaseContract.Employee.COLUMN_ID, key = true)
     @SerializedName("_id")
