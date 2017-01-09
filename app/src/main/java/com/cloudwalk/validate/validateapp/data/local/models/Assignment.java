@@ -20,8 +20,8 @@ public class Assignment {
 //    @SerializedName("_id")
     protected long id;
 
-//    @StorIOSQLiteColumn(name = AssignmentDatabaseContract.Assignment.COLUMN_DEPARTMENR)
-//    @StorIOContentResolverColumn(name = AssignmentDatabaseContract.Assignment.COLUMN_DEPARTMENR)
+//    @StorIOSQLiteColumn(name = AssignmentDatabaseContract.Assignment.COLUMN_DEPARTMENT)
+//    @StorIOContentResolverColumn(name = AssignmentDatabaseContract.Assignment.COLUMN_DEPARTMENT)
 //    @SerializedName("dept")
     protected String department;
 
