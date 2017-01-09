@@ -31,8 +31,8 @@ public class Provider extends ContentProvider {
         matcher.addURI(authority, DatabaseContract.PATH_POST + "/#", POST_ITEM);
         matcher.addURI(authority, DatabaseContract.PATH_POST, POST_DIR);
 
-        matcher.addURI(authority, DatabaseContract.PATH_EMPLOYEE + "/#", EMPLOYEE_ITEM);
-        matcher.addURI(authority, DatabaseContract.PATH_EMPLOYEE, EMPLOYEE_DIR);
+        matcher.addURI(authority, EmployeeDatabaseContract.PATH_EMPLOYEE + "/#", EMPLOYEE_ITEM);
+        matcher.addURI(authority, EmployeeDatabaseContract.PATH_EMPLOYEE, EMPLOYEE_DIR);
 
         return matcher;
     }
@@ -72,7 +72,7 @@ public class Provider extends ContentProvider {
                 break;
             case EMPLOYEE_DIR:
                 retCursor = mDbHelper.getReadableDatabase().query(
-                        DatabaseContract.Employee.TABLE_NAME,
+                        EmployeeDatabaseContract.Employee.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -83,7 +83,7 @@ public class Provider extends ContentProvider {
                 break;
             case EMPLOYEE_ITEM:
                 retCursor = mDbHelper.getReadableDatabase().query(
-                        DatabaseContract.Employee.TABLE_NAME,
+                        EmployeeDatabaseContract.Employee.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -110,9 +110,9 @@ public class Provider extends ContentProvider {
             case POST_DIR:
                 return DatabaseContract.Post.CONTENT_USER_TYPE;
             case EMPLOYEE_ITEM:
-                return DatabaseContract.Employee.CONTENT_USER_ITEM_TYPE;
+                return EmployeeDatabaseContract.Employee.CONTENT_USER_ITEM_TYPE;
             case EMPLOYEE_DIR:
-                return DatabaseContract.Employee.CONTENT_USER_TYPE;
+                return EmployeeDatabaseContract.Employee.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -133,9 +133,9 @@ public class Provider extends ContentProvider {
                     throw new SQLException("Failed to insert row " + uri);
                 break;
             case EMPLOYEE_DIR:
-                long employee_id = db.insert(DatabaseContract.Employee.TABLE_NAME, null, contentValues);
+                long employee_id = db.insert(EmployeeDatabaseContract.Employee.TABLE_NAME, null, contentValues);
                 if (employee_id > 0) {
-                    returnUri = DatabaseContract.Employee.buildEmployeeUri(employee_id);
+                    returnUri = EmployeeDatabaseContract.Employee.buildEmployeeUri(employee_id);
                 } else {
                     throw new SQLException("Failed to insert row " + uri);
                 }
@@ -156,7 +156,7 @@ public class Provider extends ContentProvider {
                 rowsDeleted = db.delete(DatabaseContract.Post.TABLE_NAME, selection, selectionArgs);
                 break;
             case EMPLOYEE_DIR:
-                rowsDeleted = db.delete(DatabaseContract.Employee.TABLE_NAME, selection, selectionArgs);
+                rowsDeleted = db.delete(EmployeeDatabaseContract.Employee.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
@@ -176,7 +176,7 @@ public class Provider extends ContentProvider {
                 update = db.update(DatabaseContract.Post.TABLE_NAME, values, selection, selectionArgs);
                 break;
             case EMPLOYEE_DIR:
-                update = db.update(DatabaseContract.Employee.TABLE_NAME, values, selection, selectionArgs);
+                update = db.update(EmployeeDatabaseContract.Employee.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
