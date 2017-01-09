@@ -14,7 +14,7 @@ public class AssignmentDatabaseContract {
     public static final String CONTENT_AUTHORITY = "com.cloudwalk.validate.validateapp";
     public static final String PATH_ASSIGNMENT = "assignment";
 
-    public static abstract class Employee implements BaseColumns {
+    public static abstract class Assignment implements BaseColumns {
         @NonNull
         public static final String CONTENT_URI_STRING = "content://" + CONTENT_AUTHORITY + "/" + PATH_ASSIGNMENT;
         public static final Uri CONTENT_URI = Uri.parse(CONTENT_URI_STRING);
@@ -32,7 +32,7 @@ public class AssignmentDatabaseContract {
         public static final String COLUMN_QRATER = "qrater";
         public static final String COLUMN_QEVENT = "qevent";
 
-        public static String getEmployeeCreateQuery() {
+        public static String getAssignmentCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
                     COLUMN_DEPARTMENT + " TEXT NOT NULL , " +
@@ -43,12 +43,12 @@ public class AssignmentDatabaseContract {
                     COLUMN_QEVENT + " TEXT NOT NULL" + ");";
         }
 
-        public static String getEmployeeDeleteQuery() {
+        public static String getAssignmentDeleteQuery() {
             return "DROP TABLE IF EXISTS " + TABLE_NAME;
         }
 
 
-        public static Uri buildEmployeeUri(long id) {
+        public static Uri buildAssignmentUri(long id) {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
     }
