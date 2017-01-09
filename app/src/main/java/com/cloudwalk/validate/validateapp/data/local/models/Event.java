@@ -1,6 +1,6 @@
 package com.cloudwalk.validate.validateapp.data.local.models;
 
-import com.cloudwalk.validate.validateapp.data.local.DatabaseContract;
+import com.cloudwalk.validate.validateapp.data.local.EventDatabaseContract;
 import com.google.gson.annotations.SerializedName;
 import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverColumn;
 import com.pushtorefresh.storio.contentresolver.annotations.StorIOContentResolverType;
@@ -14,64 +14,64 @@ import java.util.Date;
  * Created by nkmcheng on 03/01/2017.
  */
 
-//@StorIOSQLiteType(table = DatabaseContract.Event.TABLE_NAME)
-//@StorIOContentResolverType(uri = DatabaseContract.Event.CONTENT_URI_STRING)
+//@StorIOSQLiteType(table = EventDatabaseContract.Event.TABLE_NAME)
+//@StorIOContentResolverType(uri = EventDatabaseContract.Event.CONTENT_URI_STRING)
 public class Event {
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_ID, key = true)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_ID, key = true)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_ID, key = true)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_ID, key = true)
 //    @SerializedName("_id")
     protected long id;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_NAME)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_NAME)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_NAME)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_NAME)
 //    @SerializedName("e_name")
     protected String name;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_JONUM)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_JONUM)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_JONUM)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_JONUM)
 //    @SerializedName("e_jo")
     protected String jonum;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_DATE)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_DATE)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_DATE)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_DATE)
 //    @SerializedName("e_date")
     protected String eventdate;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_AREA)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_AREA)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_AREA)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_AREA)
 //    @SerializedName("e_area")
     protected String eventarea;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_POST_DATE)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_POST_DATE)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_POST_DATE)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_POST_DATE)
 //    @SerializedName("p_date")
     protected String postdate;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_PRE_DATE)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_PRE_DATE)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_PRE_DATE)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_PRE_DATE)
 //    @SerializedName("pe_date")
     protected String predate;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVENT_TIME)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVENT_TIME)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_TIME)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_TIME)
 //    @SerializedName("e_time")
     protected String eventtime;
 //
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_EVALUATOR)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_EVALUATOR)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVALUATOR)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVALUATOR)
     protected String evaluator;
 //
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_TLS)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_TLS)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_TLS)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_TLS)
     protected String tls;
 //
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_NEGO)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_NEGO)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_NEGO)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_NEGO)
     protected String nego;
 
-//    @StorIOSQLiteColumn(name = DatabaseContract.Event.COLUMN_DATE_CREATED)
-//    @StorIOContentResolverColumn(name = DatabaseContract.Event.COLUMN_DATE_CREATED)
+//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_DATE_CREATED)
+//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_DATE_CREATED)
 //    @SerializedName("datecreated")
     protected String dateCreated;
 
