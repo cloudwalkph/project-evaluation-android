@@ -5,7 +5,7 @@
     tools:context=".activities.LoginActivity">
 
     <item
-        android:id="@+id/action_logout"
+        android:id="@+id/logout"
         android:orderInCategory="300"
         android:title="Logout"
         app:showAsAction="never"/>
