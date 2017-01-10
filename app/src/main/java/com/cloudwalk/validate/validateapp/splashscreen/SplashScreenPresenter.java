@@ -6,6 +6,7 @@ import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.data.local.models.Negotiator;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 import com.cloudwalk.validate.validateapp.data.remote.AppRemoteDataStore;
@@ -251,7 +252,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List<TeamLeader> assignments) {
+                    public void onNext(List<TeamLeader> teamLeaders) {
 
                     }
                 });
@@ -284,12 +285,63 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
     }
 
     @Override
+    public void loadNegotiatorFromRemoteDataStore() {
+        new AppRemoteDataStore().getNegotiators().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Negotiator>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("SPLASH", "Get Negotiator Complete");
+
+                        loadNegotiator();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("SPLASH", e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List<Negotiator> negotiators) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void loadNegotiator() {
+        mSubscription = mAppRepository.getNegotiators()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Negotiator>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("NEGOTIATOR PUT", "Negotiator Complete");
+                        mView.showNegotiatorCompleteSync();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("NEGOTIATOR PUT", e.toString());
+                        e.printStackTrace();
+                        mView.showError(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List posts) {
+
+                    }
+                });
+    }
+
+    @Override
     public void subscribe() {
         loadEmployee();
         loadEvent();
         loadQuestion();
         loadAssignment();
         loadTeamLeader();
+        loadNegotiator();
     }
 
     @Override

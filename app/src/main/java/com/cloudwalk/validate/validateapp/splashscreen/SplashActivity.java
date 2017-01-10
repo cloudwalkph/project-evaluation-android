@@ -86,6 +86,11 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
     }
 
     @Override
+    public void showNegotiatorCompleteSync() {
+        Toast.makeText(this, "Negotiator Sync Completed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void showError(String error) {
 
     }
@@ -108,5 +113,6 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
         mPresenter.loadQuestionFromRemoteDataStore();
         mPresenter.loadAssignmentFromRemoteDataStore();
         mPresenter.loadTeamLeaderFromRemoteDataStore();
+        mPresenter.loadNegotiatorFromRemoteDataStore();
     }
 }
