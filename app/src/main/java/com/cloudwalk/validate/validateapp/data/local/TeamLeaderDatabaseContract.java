@@ -25,16 +25,16 @@ public class TeamLeaderDatabaseContract {
         public static final String TABLE_NAME = "teamleaders";
 
         public static final String COLUMN_ID = "id";
-        public static final String COLUMN_FNAME = "fname";
-        public static final String COLUMN_LNAME = "lname";
+        public static final String COLUMN_FNAME = "first_name";
+        public static final String COLUMN_LNAME = "last_name";
         public static final String COLUMN_EMAIL = "email";
 
         public static String getTeamLeaderCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
-                    COLUMN_FNAME + " TEXT NOT NULL , " +
-                    COLUMN_LNAME + " TEXT NOT NULL, " +
-                    COLUMN_EMAIL + " TEXT NOT NULL" + ");";
+                    COLUMN_FNAME + " TEXT, " +
+                    COLUMN_LNAME + " TEXT, " +
+                    COLUMN_EMAIL + " TEXT" + ");";
         }
 
         public static String getTeamLeaderDeleteQuery() {

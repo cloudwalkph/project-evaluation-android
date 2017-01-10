@@ -5,6 +5,7 @@ import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 
 import java.util.List;
 
@@ -19,4 +20,5 @@ public interface AppDataStore {
     Observable<List<Event>> getEvents();
     Observable<List<Question>> getQuestions();
     Observable<List<Assignment>> getAssignments();
+    Observable<List<TeamLeader>> getTeamLeaders();
 }

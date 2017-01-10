@@ -9,6 +9,7 @@ import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 
 import java.util.List;
 
@@ -101,6 +102,23 @@ public class AppRemoteDataStore implements AppDataStore {
     private interface AssignmentService {
         @GET("/admin/getAllAsignQuestion")
         Observable<List<Assignment>> getAssignmentList();
+    }
+
+    @Override
+    public Observable<List<TeamLeader>> getTeamLeaders() {
+        Log.d("REMOTE TEAM LEADER","Loaded from remote");
+
+        return retrofit.create(TeamLeaderService.class).getTeamLeaderList().doOnNext(new Action1<List<TeamLeader>>() {
+            @Override
+            public void call(List<TeamLeader> teamLeaders) {
+                appLocalDataStore.saveTeamLeaderToDatabase(teamLeaders);
+            }
+        });
+    }
+
+    private interface TeamLeaderService {
+        @GET("/admin/getAllTls")
+        Observable<List<TeamLeader>> getTeamLeaderList();
     }
 
 }
