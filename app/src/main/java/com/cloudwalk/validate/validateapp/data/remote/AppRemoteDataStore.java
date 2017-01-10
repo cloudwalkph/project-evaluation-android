@@ -7,6 +7,7 @@ import com.cloudwalk.validate.validateapp.data.AppDataStore;
 import com.cloudwalk.validate.validateapp.data.local.AppLocalDataStore;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.data.local.models.Question;
 
 import java.util.List;
 
@@ -65,6 +66,23 @@ public class AppRemoteDataStore implements AppDataStore {
     private interface EventService {
         @GET("/admin/getAllEvents")
         Observable<List<Event>> getEventList();
+    }
+
+    @Override
+    public Observable<List<Question>> getQuestions() {
+        Log.d("REMOTE QUESTIONS","Loaded from remote");
+
+        return retrofit.create(QuestionService.class).getQuestionList().doOnNext(new Action1<List<Question>>() {
+            @Override
+            public void call(List<Question> questions) {
+                appLocalDataStore.saveQuestionToDatabase(questions);
+            }
+        });
+    }
+
+    private interface QuestionService {
+        @GET("/admin/getAllQuestion")
+        Observable<List<Question>> getQuestionList();
     }
 
 }

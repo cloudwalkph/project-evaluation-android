@@ -25,20 +25,18 @@ public class QuestionDatabaseContract {
         public static final String TABLE_NAME = "questions";
 
         public static final String COLUMN_ID = "id";
-        public static final String COLUMN_QNAME = "qname";
-        public static final String COLUMN_QDEPT = "qdept";
-        public static final String COLUMN_QCAT = "qcat";
-        public static final String COLUMN_QTYPE = "qtype";
-        public static final String COLUMN_QSUB = "qsub";
+        public static final String COLUMN_QNAME = "name";
+        public static final String COLUMN_QDEPT = "department";
+        public static final String COLUMN_QCAT = "category";
+        public static final String COLUMN_QTYPE = "type";
 
         public static String getQuestionCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
-                    COLUMN_QNAME + " TEXT NOT NULL , " +
-                    COLUMN_QDEPT + " TEXT NOT NULL, " +
-                    COLUMN_QCAT + " TEXT NOT NULL, " +
-                    COLUMN_QTYPE + " TEXT NOT NULL, " +
-                    COLUMN_QSUB + " TEXT NOT NULL" + ");";
+                    COLUMN_QNAME + " TEXT, " +
+                    COLUMN_QDEPT + " TEXT, " +
+                    COLUMN_QCAT + " TEXT, " +
+                    COLUMN_QTYPE + " TEXT" + ");";
         }
 
         public static String getQuestionDeleteQuery() {
