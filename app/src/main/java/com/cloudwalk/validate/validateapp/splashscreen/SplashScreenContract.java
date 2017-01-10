@@ -12,6 +12,7 @@ public class SplashScreenContract {
         void showEmployeeCompleteSync();
         void showEventCompleteSync();
         void showQuestionCompleteSync();
+        void showAssignmentCompleteSync();
         void showError(String error);
     }
 
@@ -19,8 +20,10 @@ public class SplashScreenContract {
         void loadEmployeeFromRemoteDataStore();
         void loadEventFromRemoteDataStore();
         void loadQuestionFromRemoteDataStore();
+        void loadAssignmentFromRemoteDataStore();
         void loadEmployee();
         void loadEvent();
         void loadQuestion();
+        void loadAssignment();
     }
 }

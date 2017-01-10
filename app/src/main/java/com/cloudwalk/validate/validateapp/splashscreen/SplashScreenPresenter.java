@@ -3,6 +3,7 @@ package com.cloudwalk.validate.validateapp.splashscreen;
 import android.util.Log;
 
 import com.cloudwalk.validate.validateapp.data.AppRepository;
+import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
@@ -149,7 +150,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List<Question> events) {
+                    public void onNext(List<Question> questions) {
 
                     }
                 });
@@ -182,10 +183,61 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
     }
 
     @Override
+    public void loadAssignmentFromRemoteDataStore() {
+        new AppRemoteDataStore().getAssignments().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Assignment>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("SPLASH", "Get Assignment Complete");
+
+                        loadAssignment();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("SPLASH", e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List<Assignment> assignments) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void loadAssignment() {
+        mSubscription = mAppRepository.getAssignments()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Assignment>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("ASSIGNMENT PUT", "Assignment Complete");
+                        mView.showAssignmentCompleteSync();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("ASSIGNMENT PUT", e.toString());
+                        e.printStackTrace();
+                        mView.showError(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List posts) {
+
+                    }
+                });
+    }
+
+    @Override
     public void subscribe() {
         loadEmployee();
         loadEvent();
         loadQuestion();
+        loadAssignment();
     }
 
     @Override
