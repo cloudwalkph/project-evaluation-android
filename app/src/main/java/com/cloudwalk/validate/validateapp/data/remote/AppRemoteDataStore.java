@@ -8,6 +8,7 @@ import com.cloudwalk.validate.validateapp.data.local.AppLocalDataStore;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.data.local.models.Negotiator;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 
@@ -119,6 +120,23 @@ public class AppRemoteDataStore implements AppDataStore {
     private interface TeamLeaderService {
         @GET("/admin/getAllTls")
         Observable<List<TeamLeader>> getTeamLeaderList();
+    }
+
+    @Override
+    public Observable<List<Negotiator>> getNegotiators() {
+        Log.d("REMOTE NEGOTIATOR","Loaded from remote");
+
+        return retrofit.create(NegotiatorService.class).getNegotiatorList().doOnNext(new Action1<List<Negotiator>>() {
+            @Override
+            public void call(List<Negotiator> negotiators) {
+                appLocalDataStore.saveNegotiatorToDatabase(negotiators);
+            }
+        });
+    }
+
+    private interface NegotiatorService {
+        @GET("/admin/getAllNego")
+        Observable<List<Negotiator>> getNegotiatorList();
     }
 
 }

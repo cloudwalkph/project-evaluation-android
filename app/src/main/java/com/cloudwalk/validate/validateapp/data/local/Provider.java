@@ -27,6 +27,8 @@ public class Provider extends ContentProvider {
     private static final int ASSIGNMENT_DIR = 109;
     private static final int TEAMLEADER_ITEM = 110;
     private static final int TEAMLEADER_DIR = 111;
+    private static final int NEGOTIATOR_ITEM = 112;
+    private static final int NEGOTIATOR_DIR = 113;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private DatabaseHelper mDbHelper;
@@ -52,6 +54,9 @@ public class Provider extends ContentProvider {
 
         matcher.addURI(authority, TeamLeaderDatabaseContract.PATH_TEAM_LEADER + "/#", TEAMLEADER_ITEM);
         matcher.addURI(authority, TeamLeaderDatabaseContract.PATH_TEAM_LEADER, TEAMLEADER_DIR);
+
+        matcher.addURI(authority, NegotiatorDatabaseContract.PATH_NEGOTIATOR + "/#", NEGOTIATOR_ITEM);
+        matcher.addURI(authority, NegotiatorDatabaseContract.PATH_NEGOTIATOR, NEGOTIATOR_DIR);
 
         return matcher;
     }
@@ -199,6 +204,28 @@ public class Provider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case NEGOTIATOR_DIR:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        NegotiatorDatabaseContract.Negotiator.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case NEGOTIATOR_ITEM:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        NegotiatorDatabaseContract.Negotiator.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown Uri " + uri);
         }
@@ -236,6 +263,10 @@ public class Provider extends ContentProvider {
                 return TeamLeaderDatabaseContract.TeamLeader.CONTENT_USER_ITEM_TYPE;
             case TEAMLEADER_DIR:
                 return TeamLeaderDatabaseContract.TeamLeader.CONTENT_USER_TYPE;
+            case NEGOTIATOR_ITEM:
+                return NegotiatorDatabaseContract.Negotiator.CONTENT_USER_ITEM_TYPE;
+            case NEGOTIATOR_DIR:
+                return NegotiatorDatabaseContract.Negotiator.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -295,6 +326,14 @@ public class Provider extends ContentProvider {
                     throw new SQLException("Team leader Failed to insert row " + uri);
                 }
                 break;
+            case NEGOTIATOR_DIR:
+                long negotiator_id = db.insert(NegotiatorDatabaseContract.Negotiator.TABLE_NAME, null, contentValues);
+                if (negotiator_id > 0) {
+                    returnUri = NegotiatorDatabaseContract.Negotiator.buildNegotiatorUri(negotiator_id);
+                } else {
+                    throw new SQLException("Negotiator Failed to insert row " + uri);
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -324,6 +363,9 @@ public class Provider extends ContentProvider {
                 break;
             case TEAMLEADER_DIR:
                 rowsDeleted = db.delete(TeamLeaderDatabaseContract.TeamLeader.TABLE_NAME, selection, selectionArgs);
+                break;
+            case NEGOTIATOR_DIR:
+                rowsDeleted = db.delete(NegotiatorDatabaseContract.Negotiator.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
@@ -356,6 +398,9 @@ public class Provider extends ContentProvider {
                 break;
             case TEAMLEADER_DIR:
                 update = db.update(TeamLeaderDatabaseContract.TeamLeader.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case NEGOTIATOR_DIR:
+                update = db.update(NegotiatorDatabaseContract.Negotiator.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);

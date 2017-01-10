@@ -22,17 +22,17 @@ public class Negotiator {
 
     @StorIOSQLiteColumn(name = NegotiatorDatabaseContract.Negotiator.COLUMN_FNAME)
     @StorIOContentResolverColumn(name = NegotiatorDatabaseContract.Negotiator.COLUMN_FNAME)
-    @SerializedName("tfname")
+    @SerializedName("nfname")
     protected String fname;
 
     @StorIOSQLiteColumn(name = NegotiatorDatabaseContract.Negotiator.COLUMN_LNAME)
     @StorIOContentResolverColumn(name = NegotiatorDatabaseContract.Negotiator.COLUMN_LNAME)
-    @SerializedName("tlname")
+    @SerializedName("nlname")
     protected String lname;
 
     @StorIOSQLiteColumn(name = NegotiatorDatabaseContract.Negotiator.COLUMN_EMAIL)
     @StorIOContentResolverColumn(name = NegotiatorDatabaseContract.Negotiator.COLUMN_EMAIL)
-    @SerializedName("temail")
+    @SerializedName("nemail")
     protected String email;
 
     public long getId() {
