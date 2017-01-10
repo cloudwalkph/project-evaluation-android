@@ -14,65 +14,65 @@ import java.util.Date;
  * Created by nkmcheng on 03/01/2017.
  */
 
-//@StorIOSQLiteType(table = EventDatabaseContract.Event.TABLE_NAME)
-//@StorIOContentResolverType(uri = EventDatabaseContract.Event.CONTENT_URI_STRING)
+@StorIOSQLiteType(table = EventDatabaseContract.Event.TABLE_NAME)
+@StorIOContentResolverType(uri = EventDatabaseContract.Event.CONTENT_URI_STRING)
 public class Event {
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_ID, key = true)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_ID, key = true)
-//    @SerializedName("_id")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_ID, key = true)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_ID, key = true)
+    @SerializedName("_id")
     protected long id;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_NAME)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_NAME)
-//    @SerializedName("e_name")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_NAME)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_NAME)
+    @SerializedName("e_name")
     protected String name;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_JONUM)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_JONUM)
-//    @SerializedName("e_jo")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_JONUM)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_JONUM)
+    @SerializedName("e_jo")
     protected String jonum;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_DATE)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_DATE)
-//    @SerializedName("e_date")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_DATE)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_DATE)
+    @SerializedName("e_date")
     protected String eventdate;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_AREA)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_AREA)
-//    @SerializedName("e_area")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_AREA)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_AREA)
+    @SerializedName("e_area")
     protected String eventarea;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_POST_DATE)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_POST_DATE)
-//    @SerializedName("p_date")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_POST_DATE)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_POST_DATE)
+    @SerializedName("p_date")
     protected String postdate;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_PRE_DATE)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_PRE_DATE)
-//    @SerializedName("pe_date")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_PRE_DATE)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_PRE_DATE)
+    @SerializedName("pe_date")
     protected String predate;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_TIME)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_TIME)
-//    @SerializedName("e_time")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_TIME)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVENT_TIME)
+    @SerializedName("e_time")
     protected String eventtime;
-//
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVALUATOR)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVALUATOR)
+
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_EVALUATOR)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_EVALUATOR)
     protected String evaluator;
-//
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_TLS)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_TLS)
+
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_TLS)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_TLS)
     protected String tls;
-//
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_NEGO)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_NEGO)
+
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_NEGO)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_NEGO)
     protected String nego;
 
-//    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_DATE_CREATED)
-//    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_DATE_CREATED)
-//    @SerializedName("datecreated")
+    @StorIOSQLiteColumn(name = EventDatabaseContract.Event.COLUMN_DATE_CREATED)
+    @StorIOContentResolverColumn(name = EventDatabaseContract.Event.COLUMN_DATE_CREATED)
+    @SerializedName("datecreated")
     protected String dateCreated;
 
     public String getPostdate() {
@@ -169,34 +169,34 @@ public class Event {
         this.dateCreated = datecreated;
     }
 
-    public Event(long id, String name, String jonum, String eventdate,
-                 String eventarea, String postdate, String predate,
-                 String eventtime, String evaluator, String tls,
-                 String nego, String dateCreated) {
-        this.id = id;
-        this.name = name;
-        this.jonum = jonum;
-        this.eventdate = eventdate;
-        this.eventarea = eventarea;
-        this.postdate = postdate;
-        this.predate = predate;
-        this.eventtime = eventtime;
-        this.evaluator = evaluator;
-        this.tls = tls;
-        this.nego = nego;
-        this.dateCreated = dateCreated;
-    }
-
-    public static ArrayList<Event> createEventList() {
-        ArrayList<Event> events = new ArrayList<Event>();
-
-        events.add(new Event(1, "Ponds School Event", "201710001", "January 21, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
-        events.add(new Event(2, "Smart School Event", "201710002", "January 30, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
-        events.add(new Event(3, "Unilever School Event", "201710003", "February 02, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
-        events.add(new Event(4, "Globe School Event", "201710004", "March 16, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
-        events.add(new Event(5, "Sun School Event", "201710005", "June 03, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
-        events.add(new Event(6, "Test School Event", "201710006", "June 12, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
-
-        return events;
-    }
+//    public Event(long id, String name, String jonum, String eventdate,
+//                 String eventarea, String postdate, String predate,
+//                 String eventtime, String evaluator, String tls,
+//                 String nego, String dateCreated) {
+//        this.id = id;
+//        this.name = name;
+//        this.jonum = jonum;
+//        this.eventdate = eventdate;
+//        this.eventarea = eventarea;
+//        this.postdate = postdate;
+//        this.predate = predate;
+//        this.eventtime = eventtime;
+//        this.evaluator = evaluator;
+//        this.tls = tls;
+//        this.nego = nego;
+//        this.dateCreated = dateCreated;
+//    }
+//
+//    public static ArrayList<Event> createEventList() {
+//        ArrayList<Event> events = new ArrayList<Event>();
+//
+//        events.add(new Event(1, "Ponds School Event", "201710001", "January 21, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
+//        events.add(new Event(2, "Smart School Event", "201710002", "January 30, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
+//        events.add(new Event(3, "Unilever School Event", "201710003", "February 02, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
+//        events.add(new Event(4, "Globe School Event", "201710004", "March 16, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
+//        events.add(new Event(5, "Sun School Event", "201710005", "June 03, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
+//        events.add(new Event(6, "Test School Event", "201710006", "June 12, 2017", "Manila", "January 21, 2017", "January 21, 2017", "8:00PM", "CEO", "test", "test", "January 21, 2017"));
+//
+//        return events;
+//    }
 }

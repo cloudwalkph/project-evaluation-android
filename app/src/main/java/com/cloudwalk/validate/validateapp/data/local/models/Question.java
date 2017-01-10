@@ -14,8 +14,8 @@ import java.util.List;
  * Created by nkmcheng on 09/01/2017.
  */
 
-@StorIOSQLiteType(table = QuestionDatabaseContract.Question.TABLE_NAME)
-@StorIOContentResolverType(uri = QuestionDatabaseContract.Question.CONTENT_URI_STRING)
+//@StorIOSQLiteType(table = QuestionDatabaseContract.Question.TABLE_NAME)
+//@StorIOContentResolverType(uri = QuestionDatabaseContract.Question.CONTENT_URI_STRING)
 public class Question {
 
 //    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_ID, key = true)

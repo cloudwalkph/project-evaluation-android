@@ -11,8 +11,8 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
  * Created by nkmcheng on 09/01/2017.
  */
 
-@StorIOSQLiteType(table = AnswerDatabaseContract.Answer.TABLE_NAME)
-@StorIOContentResolverType(uri = AnswerDatabaseContract.Answer.CONTENT_URI_STRING)
+//@StorIOSQLiteType(table = AnswerDatabaseContract.Answer.TABLE_NAME)
+//@StorIOContentResolverType(uri = AnswerDatabaseContract.Answer.CONTENT_URI_STRING)
 public class Answer {
 
 //    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_ID, key = true)
