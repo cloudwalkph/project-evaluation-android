@@ -27,30 +27,30 @@ public class EventDatabaseContract {
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_JONUM = "jonum";
-        public static final String COLUMN_EVENT_DATE = "eventdate";
-        public static final String COLUMN_EVENT_AREA = "eventarea";
-        public static final String COLUMN_POST_DATE = "postdate";
-        public static final String COLUMN_PRE_DATE = "predate";
-        public static final String COLUMN_EVENT_TIME = "eventtime";
+        public static final String COLUMN_EVENT_DATE = "event_date";
+        public static final String COLUMN_EVENT_AREA = "event_area";
+        public static final String COLUMN_POST_DATE = "post_date";
+        public static final String COLUMN_PRE_DATE = "pre_date";
+        public static final String COLUMN_EVENT_TIME = "event_time";
         public static final String COLUMN_EVALUATOR = "evaluator";
         public static final String COLUMN_TLS = "tls";
-        public static final String COLUMN_NEGO = "nego";
-        public static final String COLUMN_DATE_CREATED = "dateCreated";
+        public static final String COLUMN_NEGO = "negotiator";
+        public static final String COLUMN_DATE_CREATED = "date_created";
 
         public static String getEventCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
-                    COLUMN_NAME + " TEXT NOT NULL , " +
-                    COLUMN_JONUM + " TEXT NOT NULL, " +
-                    COLUMN_EVENT_DATE + " TEXT NOT NULL, " +
-                    COLUMN_EVENT_AREA + " TEXT NOT NULL, " +
-                    COLUMN_POST_DATE + " TEXT NOT NULL, " +
-                    COLUMN_PRE_DATE + " TEXT NOT NULL, " +
-                    COLUMN_EVENT_TIME + " TEXT NOT NULL, " +
-                    COLUMN_EVALUATOR + " TEXT NOT NULL, " +
-                    COLUMN_TLS + " TEXT NOT NULL, " +
-                    COLUMN_NEGO + " TEXT NOT NULL, " +
-                    COLUMN_DATE_CREATED + " TEXT NOT NULL "+ ");";
+                    COLUMN_NAME + " TEXT, " +
+                    COLUMN_JONUM + " TEXT, " +
+                    COLUMN_EVENT_DATE + " TEXT, " +
+                    COLUMN_EVENT_AREA + " TEXT, " +
+                    COLUMN_POST_DATE + " TEXT, " +
+                    COLUMN_PRE_DATE + " TEXT, " +
+                    COLUMN_EVENT_TIME + " TEXT, " +
+                    COLUMN_EVALUATOR + " TEXT, " +
+                    COLUMN_TLS + " TEXT, " +
+                    COLUMN_NEGO + " TEXT, " +
+                    COLUMN_DATE_CREATED + " TEXT "+ ");";
         }
 
         public static String getEventDeleteQuery() {

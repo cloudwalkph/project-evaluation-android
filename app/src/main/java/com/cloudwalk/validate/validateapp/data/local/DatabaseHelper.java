@@ -20,12 +20,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 //        sqLiteDatabase.execSQL(DatabaseContract.Post.getPostCreateQuery());
-        sqLiteDatabase.execSQL(DatabaseContract.Employee.getEmployeeCreateQuery());
+        sqLiteDatabase.execSQL(EmployeeDatabaseContract.Employee.getEmployeeCreateQuery());
+        sqLiteDatabase.execSQL(EventDatabaseContract.Event.getEventCreateQuery());
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL(DatabaseContract.Employee.getEmployeeDeleteQuery());
+        sqLiteDatabase.execSQL(EmployeeDatabaseContract.Employee.getEmployeeDeleteQuery());
+        sqLiteDatabase.execSQL(EventDatabaseContract.Event.getEventDeleteQuery());
         onCreate(sqLiteDatabase);
     }
 }

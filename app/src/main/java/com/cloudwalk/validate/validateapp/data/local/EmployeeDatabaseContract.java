@@ -34,7 +34,7 @@ public class EmployeeDatabaseContract {
         public static String getEmployeeCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
-                    COLUMN_FNAME + " TEXT NOT NULL , " +
+                    COLUMN_FNAME + " TEXT NOT NULL, " +
                     COLUMN_LNAME + " TEXT NOT NULL, " +
                     COLUMN_EMAIL + " TEXT NOT NULL, " +
                     COLUMN_DEPARTMENT + " TEXT NOT NULL, " +

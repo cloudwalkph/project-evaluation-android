@@ -19,10 +19,11 @@ public class Provider extends ContentProvider {
     private static final int POST_DIR = 101;
     private static final int EMPLOYEE_ITEM = 102;
     private static final int EMPLOYEE_DIR = 103;
+    private static final int EVENT_ITEM = 104;
+    private static final int EVENT_DIR = 105;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private DatabaseHelper mDbHelper;
-
 
     private static UriMatcher buildUriMatcher() {
         final UriMatcher matcher = new UriMatcher(UriMatcher.NO_MATCH);
@@ -33,6 +34,9 @@ public class Provider extends ContentProvider {
 
         matcher.addURI(authority, EmployeeDatabaseContract.PATH_EMPLOYEE + "/#", EMPLOYEE_ITEM);
         matcher.addURI(authority, EmployeeDatabaseContract.PATH_EMPLOYEE, EMPLOYEE_DIR);
+
+        matcher.addURI(authority, EventDatabaseContract.PATH_EVENT + "/#", EVENT_ITEM);
+        matcher.addURI(authority, EventDatabaseContract.PATH_EVENT, EVENT_DIR);
 
         return matcher;
     }
@@ -92,6 +96,28 @@ public class Provider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case EVENT_DIR:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        EventDatabaseContract.Event.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case EVENT_ITEM:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        EventDatabaseContract.Event.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown Uri " + uri);
         }
@@ -113,6 +139,10 @@ public class Provider extends ContentProvider {
                 return EmployeeDatabaseContract.Employee.CONTENT_USER_ITEM_TYPE;
             case EMPLOYEE_DIR:
                 return EmployeeDatabaseContract.Employee.CONTENT_USER_TYPE;
+            case EVENT_ITEM:
+                return EventDatabaseContract.Event.CONTENT_USER_ITEM_TYPE;
+            case EVENT_DIR:
+                return EventDatabaseContract.Event.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -137,7 +167,15 @@ public class Provider extends ContentProvider {
                 if (employee_id > 0) {
                     returnUri = EmployeeDatabaseContract.Employee.buildEmployeeUri(employee_id);
                 } else {
-                    throw new SQLException("Failed to insert row " + uri);
+                    throw new SQLException("Employee Failed to insert row " + uri);
+                }
+                break;
+            case EVENT_DIR:
+                long event_id = db.insert(EventDatabaseContract.Event.TABLE_NAME, null, contentValues);
+                if (event_id > 0) {
+                    returnUri = EventDatabaseContract.Event.buildEventUri(event_id);
+                } else {
+                    throw new SQLException("Event Failed to insert row " + uri);
                 }
                 break;
             default:
@@ -158,6 +196,9 @@ public class Provider extends ContentProvider {
             case EMPLOYEE_DIR:
                 rowsDeleted = db.delete(EmployeeDatabaseContract.Employee.TABLE_NAME, selection, selectionArgs);
                 break;
+            case EVENT_DIR:
+                rowsDeleted = db.delete(EventDatabaseContract.Event.TABLE_NAME, selection, selectionArgs);
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -177,6 +218,9 @@ public class Provider extends ContentProvider {
                 break;
             case EMPLOYEE_DIR:
                 update = db.update(EmployeeDatabaseContract.Employee.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case EVENT_DIR:
+                update = db.update(EventDatabaseContract.Event.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);

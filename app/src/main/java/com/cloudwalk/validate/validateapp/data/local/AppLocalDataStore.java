@@ -9,6 +9,10 @@ import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.EmployeeStorIOContentResolverDeleteResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.EmployeeStorIOContentResolverGetResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.EmployeeStorIOContentResolverPutResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.data.local.models.EventStorIOContentResolverDeleteResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.EventStorIOContentResolverGetResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.EventStorIOContentResolverPutResolver;
 import com.pushtorefresh.storio.contentresolver.ContentResolverTypeMapping;
 import com.pushtorefresh.storio.contentresolver.StorIOContentResolver;
 import com.pushtorefresh.storio.contentresolver.impl.DefaultStorIOContentResolver;
@@ -27,6 +31,7 @@ import rx.Observable;
 public class AppLocalDataStore implements AppDataStore {
 
     private StorIOContentResolver mStorIOContentResolver;
+    private StorIOContentResolver mEventStorIOContentResolver;
 
     public AppLocalDataStore(@NonNull Context context) {
         this.mStorIOContentResolver = DefaultStorIOContentResolver.builder()
@@ -37,20 +42,44 @@ public class AppLocalDataStore implements AppDataStore {
                 .deleteResolver(new EmployeeStorIOContentResolverDeleteResolver())
                 .build()
             ).build();
+
+        this.mEventStorIOContentResolver = DefaultStorIOContentResolver.builder()
+                .contentResolver(context.getContentResolver())
+                .addTypeMapping(Event.class, ContentResolverTypeMapping.<Event>builder()
+                        .putResolver(new EventStorIOContentResolverPutResolver())
+                        .getResolver(new EventStorIOContentResolverGetResolver())
+                        .deleteResolver(new EventStorIOContentResolverDeleteResolver())
+                        .build()
+                ).build();
     }
 
     @Override
     public Observable<List<Employee>> getEmployees() {
-        Log.d("LOCAL","Loaded from local");
+        Log.d("LOCAL EMPLOYEES","Loaded from local");
 
         return mStorIOContentResolver.get()
                 .listOfObjects(Employee.class)
-                .withQuery(Query.builder().uri(DatabaseContract.Employee.CONTENT_URI).build())
+                .withQuery(Query.builder().uri(EmployeeDatabaseContract.Employee.CONTENT_URI).build())
                 .prepare()
                 .asRxObservable();
     }
 
     public void saveEmployeeToDatabase(List<Employee> employees) {
         mStorIOContentResolver.put().objects(employees).prepare().executeAsBlocking();
+    }
+
+    @Override
+    public Observable<List<Event>> getEvents() {
+        Log.d("LOCAL EVENTS","Loaded from local");
+
+        return mEventStorIOContentResolver.get()
+                .listOfObjects(Event.class)
+                .withQuery(Query.builder().uri(EventDatabaseContract.Event.CONTENT_URI).build())
+                .prepare()
+                .asRxObservable();
+    }
+
+    public void saveEventToDatabase(List<Event> events) {
+        mEventStorIOContentResolver.put().objects(events).prepare().executeAsBlocking();
     }
 }
