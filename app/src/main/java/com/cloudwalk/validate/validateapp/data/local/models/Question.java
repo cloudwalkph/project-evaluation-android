@@ -14,49 +14,30 @@ import java.util.List;
  * Created by nkmcheng on 09/01/2017.
  */
 
-//@StorIOSQLiteType(table = QuestionDatabaseContract.Question.TABLE_NAME)
-//@StorIOContentResolverType(uri = QuestionDatabaseContract.Question.CONTENT_URI_STRING)
+@StorIOSQLiteType(table = QuestionDatabaseContract.Question.TABLE_NAME)
+@StorIOContentResolverType(uri = QuestionDatabaseContract.Question.CONTENT_URI_STRING)
 public class Question {
 
-//    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_ID, key = true)
-//    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_ID, key = true)
-//    @SerializedName("_id")
+    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_ID, key = true)
+    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_ID, key = true)
+    @SerializedName("_id")
     protected long id;
 
-//    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_NAME)
-//    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_NAME)
-//    @SerializedName("qname")
+    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_QNAME)
+    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_QNAME)
     protected String qname;
 
-//    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_JONUM)
-//    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_JONUM)
-//    @SerializedName("qdept")
+    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_QDEPT)
+    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_QDEPT)
     protected String qdept;
 
-//    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_EVENT_DATE)
-//    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_EVENT_DATE)
-//    @SerializedName("qcat")
+    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_QCAT)
+    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_QCAT)
     protected String qcat;
 
-//    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_EVENT_AREA)
-//    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_EVENT_AREA)
-//    @SerializedName("qtype")
+    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_QTYPE)
+    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_QTYPE)
     protected String qtype;
-
-//    @StorIOSQLiteColumn(name = QuestionDatabaseContract.Question.COLUMN_POST_DATE)
-//    @StorIOContentResolverColumn(name = QuestionDatabaseContract.Question.COLUMN_POST_DATE)
-//    @SerializedName("qsub")
-    protected String qsub;
-
-    List<Answer> answers = new ArrayList<Answer>();
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
 
     public long getId() {
         return id;
@@ -96,14 +77,6 @@ public class Question {
 
     public void setQcat(String qcat) {
         this.qcat = qcat;
-    }
-
-    public String getQsub() {
-        return qsub;
-    }
-
-    public void setQsub(String qsub) {
-        this.qsub = qsub;
     }
 
 }
