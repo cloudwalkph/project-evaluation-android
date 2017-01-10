@@ -109,6 +109,6 @@ public class AppLocalDataStore implements AppDataStore {
     }
 
     public void saveQuestionToDatabase(List<Question> questions) {
-        mEventStorIOContentResolver.put().objects(questions).prepare().executeAsBlocking();
+        mQuestionStorIOContentResolver.put().objects(questions).prepare().executeAsBlocking();
     }
 }
