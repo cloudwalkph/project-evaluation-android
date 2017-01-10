@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView mRvEvents = (RecyclerView) findViewById(R.id.rv_events);
 
         // Initialize events
-        events = Event.createEventList();
-        EventsAdapter adapter = new EventsAdapter(this, events);
-        mRvEvents.setAdapter(adapter);
-        mRvEvents.setLayoutManager(new LinearLayoutManager(this));
+//        events = Event.createEventList();
+//        EventsAdapter adapter = new EventsAdapter(this, events);
+//        mRvEvents.setAdapter(adapter);
+//        mRvEvents.setLayoutManager(new LinearLayoutManager(this));
 
     }
 

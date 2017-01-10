@@ -10,11 +10,14 @@ import com.cloudwalk.validate.validateapp.BaseView;
 public class SplashScreenContract {
     interface View extends BaseView<Presenter> {
         void showEmployeeCompleteSync();
+        void showEventCompleteSync();
         void showError(String error);
     }
 
     interface Presenter extends BasePresenter {
         void loadEmployeeFromRemoteDataStore();
+        void loadEventFromRemoteDataStore();
         void loadEmployee();
+        void loadEvent();
     }
 }
