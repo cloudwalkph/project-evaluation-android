@@ -25,22 +25,20 @@ public class AssignmentDatabaseContract {
         public static final String TABLE_NAME = "assignments";
 
         public static final String COLUMN_ID = "id";
-        public static final String COLUMN_DEPARTMENT = "department";
-        public static final String COLUMN_QNUM = "qnum";
-        public static final String COLUMN_QCAT = "qcat";
-        public static final String COLUMN_QRATEE = "qratee";
-        public static final String COLUMN_QRATER = "qrater";
-        public static final String COLUMN_QEVENT = "qevent";
+        public static final String COLUMN_QNUM = "question";
+        public static final String COLUMN_QCAT = "category";
+        public static final String COLUMN_QRATEE = "ratee";
+        public static final String COLUMN_QRATER = "rater";
+        public static final String COLUMN_QEVENT = "event_id";
 
         public static String getAssignmentCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
-                    COLUMN_DEPARTMENT + " TEXT NOT NULL , " +
-                    COLUMN_QNUM + " TEXT NOT NULL, " +
-                    COLUMN_QCAT + " TEXT NOT NULL, " +
-                    COLUMN_QRATEE + " TEXT NOT NULL, " +
-                    COLUMN_QRATER + " TEXT NOT NULL, " +
-                    COLUMN_QEVENT + " TEXT NOT NULL" + ");";
+                    COLUMN_QNUM + " TEXT, " +
+                    COLUMN_QCAT + " TEXT, " +
+                    COLUMN_QRATEE + " TEXT, " +
+                    COLUMN_QRATER + " TEXT, " +
+                    COLUMN_QEVENT + " TEXT" + ");";
         }
 
         public static String getAssignmentDeleteQuery() {

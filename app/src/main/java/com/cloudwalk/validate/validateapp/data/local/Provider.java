@@ -23,6 +23,8 @@ public class Provider extends ContentProvider {
     private static final int EVENT_DIR = 105;
     private static final int QUESTION_ITEM = 106;
     private static final int QUESTION_DIR = 107;
+    private static final int ASSIGNMENT_ITEM = 108;
+    private static final int ASSIGNMENT_DIR = 109;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private DatabaseHelper mDbHelper;
@@ -42,6 +44,9 @@ public class Provider extends ContentProvider {
 
         matcher.addURI(authority, QuestionDatabaseContract.PATH_QUESTION + "/#", QUESTION_ITEM);
         matcher.addURI(authority, QuestionDatabaseContract.PATH_QUESTION, QUESTION_DIR);
+
+        matcher.addURI(authority, AssignmentDatabaseContract.PATH_ASSIGNMENT + "/#", ASSIGNMENT_ITEM);
+        matcher.addURI(authority, AssignmentDatabaseContract.PATH_ASSIGNMENT, ASSIGNMENT_DIR);
 
         return matcher;
     }
@@ -145,6 +150,28 @@ public class Provider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case ASSIGNMENT_DIR:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        AssignmentDatabaseContract.Assignment.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case ASSIGNMENT_ITEM:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        AssignmentDatabaseContract.Assignment.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown Uri " + uri);
         }
@@ -174,6 +201,10 @@ public class Provider extends ContentProvider {
                 return QuestionDatabaseContract.Question.CONTENT_USER_ITEM_TYPE;
             case QUESTION_DIR:
                 return QuestionDatabaseContract.Question.CONTENT_USER_TYPE;
+            case ASSIGNMENT_ITEM:
+                return AssignmentDatabaseContract.Assignment.CONTENT_USER_ITEM_TYPE;
+            case ASSIGNMENT_DIR:
+                return AssignmentDatabaseContract.Assignment.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -217,6 +248,14 @@ public class Provider extends ContentProvider {
                     throw new SQLException("Question Failed to insert row " + uri);
                 }
                 break;
+            case ASSIGNMENT_DIR:
+                long assignment_id = db.insert(AssignmentDatabaseContract.Assignment.TABLE_NAME, null, contentValues);
+                if (assignment_id > 0) {
+                    returnUri = AssignmentDatabaseContract.Assignment.buildAssignmentUri(assignment_id);
+                } else {
+                    throw new SQLException("Assignment Failed to insert row " + uri);
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -240,6 +279,9 @@ public class Provider extends ContentProvider {
                 break;
             case QUESTION_DIR:
                 rowsDeleted = db.delete(QuestionDatabaseContract.Question.TABLE_NAME, selection, selectionArgs);
+                break;
+            case ASSIGNMENT_DIR:
+                rowsDeleted = db.delete(AssignmentDatabaseContract.Assignment.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
@@ -266,6 +308,9 @@ public class Provider extends ContentProvider {
                 break;
             case QUESTION_DIR:
                 update = db.update(QuestionDatabaseContract.Question.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case ASSIGNMENT_DIR:
+                update = db.update(AssignmentDatabaseContract.Assignment.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);

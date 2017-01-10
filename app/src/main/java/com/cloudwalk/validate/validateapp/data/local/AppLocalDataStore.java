@@ -5,6 +5,10 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.cloudwalk.validate.validateapp.data.AppDataStore;
+import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
+import com.cloudwalk.validate.validateapp.data.local.models.AssignmentStorIOContentResolverDeleteResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.AssignmentStorIOContentResolverGetResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.AssignmentStorIOContentResolverPutResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.EmployeeStorIOContentResolverDeleteResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.EmployeeStorIOContentResolverGetResolver;
@@ -37,6 +41,7 @@ public class AppLocalDataStore implements AppDataStore {
     private StorIOContentResolver mStorIOContentResolver;
     private StorIOContentResolver mEventStorIOContentResolver;
     private StorIOContentResolver mQuestionStorIOContentResolver;
+    private StorIOContentResolver mAssignmentStorIOContentResolver;
 
     public AppLocalDataStore(@NonNull Context context) {
         this.mStorIOContentResolver = DefaultStorIOContentResolver.builder()
@@ -63,6 +68,15 @@ public class AppLocalDataStore implements AppDataStore {
                         .putResolver(new QuestionStorIOContentResolverPutResolver())
                         .getResolver(new QuestionStorIOContentResolverGetResolver())
                         .deleteResolver(new QuestionStorIOContentResolverDeleteResolver())
+                        .build()
+                ).build();
+
+        this.mAssignmentStorIOContentResolver = DefaultStorIOContentResolver.builder()
+                .contentResolver(context.getContentResolver())
+                .addTypeMapping(Assignment.class, ContentResolverTypeMapping.<Assignment>builder()
+                        .putResolver(new AssignmentStorIOContentResolverPutResolver())
+                        .getResolver(new AssignmentStorIOContentResolverGetResolver())
+                        .deleteResolver(new AssignmentStorIOContentResolverDeleteResolver())
                         .build()
                 ).build();
     }
@@ -110,5 +124,20 @@ public class AppLocalDataStore implements AppDataStore {
 
     public void saveQuestionToDatabase(List<Question> questions) {
         mQuestionStorIOContentResolver.put().objects(questions).prepare().executeAsBlocking();
+    }
+
+    @Override
+    public Observable<List<Assignment>> getAssignments() {
+        Log.d("LOCAL ASSIGNMENTS","Loaded from local");
+
+        return mAssignmentStorIOContentResolver.get()
+                .listOfObjects(Assignment.class)
+                .withQuery(Query.builder().uri(AssignmentDatabaseContract.Assignment.CONTENT_URI).build())
+                .prepare()
+                .asRxObservable();
+    }
+
+    public void saveAssignmentToDatabase(List<Assignment> assignments) {
+        mAssignmentStorIOContentResolver.put().objects(assignments).prepare().executeAsBlocking();
     }
 }

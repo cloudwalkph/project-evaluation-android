@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cloudwalk.validate.validateapp.App;
 import com.cloudwalk.validate.validateapp.data.AppDataStore;
 import com.cloudwalk.validate.validateapp.data.local.AppLocalDataStore;
+import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
@@ -83,6 +84,23 @@ public class AppRemoteDataStore implements AppDataStore {
     private interface QuestionService {
         @GET("/admin/getAllQuestion")
         Observable<List<Question>> getQuestionList();
+    }
+
+    @Override
+    public Observable<List<Assignment>> getAssignments() {
+        Log.d("REMOTE ASSIGNMENT","Loaded from remote");
+
+        return retrofit.create(AssignmentService.class).getAssignmentList().doOnNext(new Action1<List<Assignment>>() {
+            @Override
+            public void call(List<Assignment> assignments) {
+                appLocalDataStore.saveAssignmentToDatabase(assignments);
+            }
+        });
+    }
+
+    private interface AssignmentService {
+        @GET("/admin/getAllAsignQuestion")
+        Observable<List<Assignment>> getAssignmentList();
     }
 
 }
