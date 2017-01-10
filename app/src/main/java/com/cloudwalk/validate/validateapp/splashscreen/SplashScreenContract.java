@@ -11,13 +11,16 @@ public class SplashScreenContract {
     interface View extends BaseView<Presenter> {
         void showEmployeeCompleteSync();
         void showEventCompleteSync();
+        void showQuestionCompleteSync();
         void showError(String error);
     }
 
     interface Presenter extends BasePresenter {
         void loadEmployeeFromRemoteDataStore();
         void loadEventFromRemoteDataStore();
+        void loadQuestionFromRemoteDataStore();
         void loadEmployee();
         void loadEvent();
+        void loadQuestion();
     }
 }

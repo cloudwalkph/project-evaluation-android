@@ -5,6 +5,7 @@ import android.util.Log;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.data.local.models.Question;
 import com.cloudwalk.validate.validateapp.data.remote.AppRemoteDataStore;
 
 import java.util.List;
@@ -131,9 +132,60 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
     }
 
     @Override
+    public void loadQuestionFromRemoteDataStore() {
+        new AppRemoteDataStore().getQuestions().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Question>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("SPLASH", "Get Questions Complete");
+
+                        loadQuestion();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("SPLASH", e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List<Question> events) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void loadQuestion() {
+        mSubscription = mAppRepository.getQuestions()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Question>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("QUESTIONS PUT", "Question Complete");
+                        mView.showQuestionCompleteSync();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("QUESTIONS PUT", e.toString());
+                        e.printStackTrace();
+                        mView.showError(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List posts) {
+
+                    }
+                });
+    }
+
+    @Override
     public void subscribe() {
         loadEmployee();
         loadEvent();
+        loadQuestion();
     }
 
     @Override
