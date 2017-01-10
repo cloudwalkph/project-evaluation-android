@@ -7,6 +7,7 @@ import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 import com.cloudwalk.validate.validateapp.data.remote.AppRemoteDataStore;
 
 import java.util.List;
@@ -233,11 +234,62 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
     }
 
     @Override
+    public void loadTeamLeaderFromRemoteDataStore() {
+        new AppRemoteDataStore().getTeamLeaders().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<TeamLeader>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("SPLASH", "Get Team leader Complete");
+
+                        loadTeamLeader();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("SPLASH", e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List<TeamLeader> assignments) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void loadTeamLeader() {
+        mSubscription = mAppRepository.getTeamLeaders()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<TeamLeader>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("TEAM LEADER PUT", "Team leader Complete");
+                        mView.showTeamLeaderCompleteSync();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("TEAM LEADER PUT", e.toString());
+                        e.printStackTrace();
+                        mView.showError(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List posts) {
+
+                    }
+                });
+    }
+
+    @Override
     public void subscribe() {
         loadEmployee();
         loadEvent();
         loadQuestion();
         loadAssignment();
+        loadTeamLeader();
     }
 
     @Override
