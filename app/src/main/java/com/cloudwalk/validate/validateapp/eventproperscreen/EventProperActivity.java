@@ -30,7 +30,8 @@ public class EventProperActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_proper);
-        setTitle(mCurrentEvent.getName());
+//        setTitle(mCurrentEvent.getName());
+        setTitle("Test");
 
         mPreEventLayout = (LinearLayout) findViewById(R.id.ll_pre_event);
         mPreEventLayout.setOnClickListener(new View.OnClickListener() {
