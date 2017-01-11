@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.loginscreen.LoginScreenPresenter;
 
 
 import butterknife.Bind;
@@ -28,7 +29,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreEventSurveyActivity extends AppCompatActivity {
 
-    MyPageAdapter pageAdapter;
+    public MyPageAdapter pageAdapter;
+    public ViewPager mPager;
     @Bind(R.id.header_events_title) TextView mEventsTitle;
     @Bind(R.id.header_department) TextView mDepartmentTitle;
     @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
@@ -55,10 +57,10 @@ public class PreEventSurveyActivity extends AppCompatActivity {
 
         pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
 
-        ViewPager pager = (ViewPager)findViewById(R.id.viewpager);
-        pager.setAdapter(pageAdapter);
+        mPager = (ViewPager)findViewById(R.id.viewpager);
+        mPager.setAdapter(pageAdapter);
 
-        changeUi("Human Resource Department");
+        changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
 
     }
 
