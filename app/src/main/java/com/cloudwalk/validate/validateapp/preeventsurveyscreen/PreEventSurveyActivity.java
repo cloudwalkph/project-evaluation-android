@@ -20,6 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.loginscreen.LoginScreenPresenter;
 
 
@@ -34,6 +35,10 @@ public class PreEventSurveyActivity extends AppCompatActivity {
     @Bind(R.id.header_events_title) TextView mEventsTitle;
     @Bind(R.id.header_department) TextView mDepartmentTitle;
     @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
+    @Bind(R.id.progressBar) ProgressBar pBar;
+    int currentPage;
+
+    public static Event mCurrentEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,9 @@ public class PreEventSurveyActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        pBar.setProgress(0);
+        mEventsTitle.setText(mCurrentEvent.getName());
 
         List<Fragment> fragments = getFragments();
 

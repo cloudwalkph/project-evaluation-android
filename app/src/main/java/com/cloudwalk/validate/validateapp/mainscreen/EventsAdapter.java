@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
+import com.cloudwalk.validate.validateapp.preeventsurveyscreen.PreEventSurveyActivity;
 
 import java.util.List;
 
@@ -105,6 +106,7 @@ public class EventsAdapter extends
             Event event = mEvents.get(position);
 
             EventProperActivity.mCurrentEvent = event;
+            PreEventSurveyActivity.mCurrentEvent = event;
             Intent intent = new Intent(getContext(), EventProperActivity.class);
             getContext().startActivity(intent);
         }
