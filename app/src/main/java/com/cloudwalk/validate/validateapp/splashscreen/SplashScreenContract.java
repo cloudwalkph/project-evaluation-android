@@ -16,6 +16,8 @@ public class SplashScreenContract {
         void showTeamLeaderCompleteSync();
         void showNegotiatorCompleteSync();
         void showError(String error);
+
+        void moveToLoginScreen();
     }
 
     interface Presenter extends BasePresenter {

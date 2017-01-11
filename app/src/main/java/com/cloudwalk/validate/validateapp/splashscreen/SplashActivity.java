@@ -96,6 +96,11 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
     }
 
     @Override
+    public void moveToLoginScreen() {
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         mPresenter.subscribe();
