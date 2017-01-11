@@ -138,6 +138,22 @@ public class AppLocalDataStore implements AppDataStore {
                 .asRxObservable();
     }
 
+    public Observable<Employee> attemptLogin(String email, String password) {
+        Log.d("Login Employee", "Getting Employee by id");
+
+        return mEventStorIOContentResolver.get()
+                .object(Employee.class)
+                .withQuery(Query.builder()
+                        .uri(EmployeeDatabaseContract.Employee.CONTENT_URI)
+                        .where("email = ?")
+                        .whereArgs(email)
+                        .where("password = ?")
+                        .whereArgs(password)
+                        .build()
+                ).prepare()
+                .asRxObservable();
+    }
+
     @Override
     public Observable<List<Event>> getEvents() {
         Log.d("LOCAL EVENTS","Loaded from local");

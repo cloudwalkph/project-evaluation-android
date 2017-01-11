@@ -97,6 +97,16 @@ public class AppRepository implements AppDataStore {
                 });
     }
 
+    public Observable<Employee> attemptLogin(String email, String password) {
+        return mAppLocalDataStore.attemptLogin(email, password)
+                .first(new Func1<Employee, Boolean>() {
+                    @Override
+                    public Boolean call(Employee employee) {
+                        return employee != null;
+                    }
+                });
+    }
+
     @Override
     public Observable<List<TeamLeader>> getTeamLeaders() {
         return Observable.concat(mAppLocalDataStore.getTeamLeaders(), mAppRemoteDataStore.getTeamLeaders())
