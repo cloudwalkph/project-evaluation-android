@@ -25,7 +25,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements MainScreenContract.View {
 
-    List<Event> eventList;
+    public List<Event> eventList;
+    public static List<Assignment> mAssignments;
     private RecyclerView.LayoutManager mLayoutManager;
     private MainScreenContract.Presenter mPresenter;
 
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
 
     @Override
     public void getAssignments(List<Assignment> assignments) {
+        mAssignments = assignments;
         for (Assignment assignment : assignments) {
             Log.i("MAINSCREEN ASSIGNMENT", assignment.getQevent().toString());
 

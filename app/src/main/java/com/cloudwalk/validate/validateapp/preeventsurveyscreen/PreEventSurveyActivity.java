@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 import com.cloudwalk.validate.validateapp.loginscreen.LoginScreenPresenter;
 
 
@@ -37,8 +38,6 @@ public class PreEventSurveyActivity extends AppCompatActivity {
     @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
     @Bind(R.id.progressBar) ProgressBar pBar;
     int currentPage;
-
-    public static Event mCurrentEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         }
 
         pBar.setProgress(0);
-        mEventsTitle.setText(mCurrentEvent.getName());
+        mEventsTitle.setText(EventProperActivity.mCurrentEvent.getName());
 
         mQuestionAdapter = new QuestionAdapter(getSupportFragmentManager());
 
