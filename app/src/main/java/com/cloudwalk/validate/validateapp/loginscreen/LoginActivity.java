@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
