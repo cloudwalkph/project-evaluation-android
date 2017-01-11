@@ -60,7 +60,7 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         mPager = (ViewPager)findViewById(R.id.viewpager);
         mPager.setAdapter(pageAdapter);
 
-        changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
+            changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
 
     }
 
