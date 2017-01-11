@@ -8,10 +8,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.eventpropersurveyscreen.EventProperSurveyActivity;
 import com.cloudwalk.validate.validateapp.posteventsurveyscreen.PostEventSurveyActivity;
 import com.cloudwalk.validate.validateapp.preeventsurveyscreen.PreEventSurveyActivity;
+
+import javax.inject.Inject;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -26,12 +29,19 @@ public class EventProperActivity extends AppCompatActivity {
     public LinearLayout mEventProperLayout;
     public LinearLayout mPostEventLayout;
 
+    private EventProperContract.Presenter mPresenter;
+
+    @Inject
+    AppRepository repository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_proper);
         setTitle(mCurrentEvent.getName());
 //        setTitle("Test");
+
+        new EventProperPresenter(repository, this);
 
         mPreEventLayout = (LinearLayout) findViewById(R.id.ll_pre_event);
         mPreEventLayout.setOnClickListener(new View.OnClickListener() {
@@ -65,5 +75,21 @@ public class EventProperActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    public void setPresenter(EventProperPresenter presenter) {
+        this.mPresenter = presenter;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.subscribe();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.unsubscribe();
     }
 }
