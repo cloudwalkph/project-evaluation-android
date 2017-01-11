@@ -30,7 +30,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreEventSurveyActivity extends AppCompatActivity {
 
-    public MyPageAdapter pageAdapter;
+    public QuestionAdapter questionAdapter;
     public ViewPager mPager;
     @Bind(R.id.header_events_title) TextView mEventsTitle;
     @Bind(R.id.header_department) TextView mDepartmentTitle;
@@ -63,10 +63,10 @@ public class PreEventSurveyActivity extends AppCompatActivity {
 
         List<Fragment> fragments = getFragments();
 
-        pageAdapter = new MyPageAdapter(getSupportFragmentManager(), fragments);
+        questionAdapter = new QuestionAdapter(getSupportFragmentManager(), fragments);
 
         mPager = (ViewPager)findViewById(R.id.viewpager);
-        mPager.setAdapter(pageAdapter);
+        mPager.setAdapter(questionAdapter);
 
             changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
 
@@ -91,24 +91,6 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         fList.add(MyFragment.newInstance("Fragment 3"));
 
         return fList;
-    }
-
-    private class MyPageAdapter extends FragmentPagerAdapter {
-        private List<Fragment> fragments;
-
-        public MyPageAdapter(FragmentManager fm, List<Fragment> fragments) {
-            super(fm);
-            this.fragments = fragments;
-        }
-        @Override
-        public Fragment getItem(int position) {
-            return this.fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return this.fragments.size();
-        }
     }
 
     @Override
