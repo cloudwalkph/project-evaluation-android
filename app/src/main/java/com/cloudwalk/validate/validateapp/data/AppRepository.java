@@ -77,6 +77,16 @@ public class AppRepository implements AppDataStore {
                 });
     }
 
+    public Observable<List<Assignment>> getUserAssignments(int employeeId) {
+        return mAppLocalDataStore.getUserAssignments(employeeId)
+                .first(new Func1<List<Assignment>, Boolean>() {
+                    @Override
+                    public Boolean call(List<Assignment> assignments) {
+                        return assignments != null;
+                    }
+                });
+    }
+
     @Override
     public Observable<List<TeamLeader>> getTeamLeaders() {
         return Observable.concat(mAppLocalDataStore.getTeamLeaders(), mAppRemoteDataStore.getTeamLeaders())

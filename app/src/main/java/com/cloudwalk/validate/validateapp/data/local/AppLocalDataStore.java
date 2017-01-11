@@ -124,6 +124,20 @@ public class AppLocalDataStore implements AppDataStore {
         mStorIOContentResolver.put().objects(employees).prepare().executeAsBlocking();
     }
 
+    public Observable<List<Assignment>> getUserAssignments(int employeeId) {
+        Log.d("UserEvents", "Getting events for authenticated user");
+
+        return mAssignmentStorIOContentResolver.get()
+                .listOfObjects(Assignment.class)
+                .withQuery(Query.builder()
+                        .uri(AssignmentDatabaseContract.Assignment.CONTENT_URI)
+                        .where("rater = ?")
+                        .whereArgs(employeeId)
+                        .build()
+                ).prepare()
+                .asRxObservable();
+    }
+
     @Override
     public Observable<List<Event>> getEvents() {
         Log.d("LOCAL EVENTS","Loaded from local");

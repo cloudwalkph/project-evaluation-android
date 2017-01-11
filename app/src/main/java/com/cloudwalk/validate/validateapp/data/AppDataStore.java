@@ -21,6 +21,7 @@ public interface AppDataStore {
     Observable<List<Event>> getEvents();
     Observable<List<Question>> getQuestions();
     Observable<List<Assignment>> getAssignments();
+//    Observable<List<Assignment>> getUserAssignments(int employeeId);
     Observable<List<TeamLeader>> getTeamLeaders();
     Observable<List<Negotiator>> getNegotiators();
 }
