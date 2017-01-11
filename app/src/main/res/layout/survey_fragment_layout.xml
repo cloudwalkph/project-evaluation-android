@@ -29,44 +29,7 @@
             android:orientation="vertical"
             android:paddingTop="20dp"
             android:gravity="left"
-            android:layout_marginLeft="80dp">
-
-
-            <RadioButton
-                android:text="Details explained through Gantt Chart"
-                android:textAppearance="@style/montserratBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/answer1"
-                android:textSize="20dp"
-                android:padding="10dp"/>
-
-            <RadioButton
-                android:text="Status shared via Viber"
-                android:textAppearance="@style/montserratBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/answer2"
-                android:textSize="20dp"
-                android:padding="10dp"/>
-
-            <RadioButton
-                android:text="Status shared via Email"
-                android:textAppearance="@style/montserratBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/answer3"
-                android:textSize="20dp"
-                android:padding="10dp"/>
-
-            <RadioButton
-                android:text="Status shared via Calls/SMS"
-                android:textAppearance="@style/montserratBold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/answer4"
-                android:textSize="20dp"
-                android:padding="10dp"/>
+            android:layout_marginLeft="40dp">
 
         </LinearLayout>
 
