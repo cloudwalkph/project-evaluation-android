@@ -87,6 +87,16 @@ public class AppRepository implements AppDataStore {
                 });
     }
 
+    public Observable<Event> getUserEvents(int eventId) {
+        return mAppLocalDataStore.getUserEvents(eventId)
+                .first(new Func1<Event, Boolean>() {
+                    @Override
+                    public Boolean call(Event event) {
+                        return event != null;
+                    }
+                });
+    }
+
     @Override
     public Observable<List<TeamLeader>> getTeamLeaders() {
         return Observable.concat(mAppLocalDataStore.getTeamLeaders(), mAppRemoteDataStore.getTeamLeaders())

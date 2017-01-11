@@ -25,7 +25,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity implements MainScreenContract.View {
 
-    ArrayList<Event> events;
+    List<Event> eventList;
     private RecyclerView.LayoutManager mLayoutManager;
     private MainScreenContract.Presenter mPresenter;
 
@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         RecyclerView mRvEvents = (RecyclerView) findViewById(R.id.rv_events);
 
         // Initialize events
-//        events = Event.createEventList();
-//        EventsAdapter adapter = new EventsAdapter(this, events);
-//        mRvEvents.setAdapter(adapter);
-//        mRvEvents.setLayoutManager(new LinearLayoutManager(this));
+        eventList = new ArrayList<Event>();
 
+        EventsAdapter adapter = new EventsAdapter(this, eventList);
+        mRvEvents.setAdapter(adapter);
+        mRvEvents.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -95,7 +95,16 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
     @Override
     public void getAssignments(List<Assignment> assignments) {
         for (Assignment assignment : assignments) {
-            Log.i("MAINSCREEN", assignment.getQevent().toString());
+            Log.i("MAINSCREEN ASSIGNMENT", assignment.getQevent().toString());
+
+            // Get the event
+            mPresenter.getEventById(Integer.parseInt(assignment.getQevent()));
         }
+    }
+
+    @Override
+    public void getEvents(Event event) {
+        Log.i("MAINSCREEN EVENT", event.getName());
+        eventList.add(event);
     }
 }

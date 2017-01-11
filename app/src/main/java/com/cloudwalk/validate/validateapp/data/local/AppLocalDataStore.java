@@ -124,15 +124,15 @@ public class AppLocalDataStore implements AppDataStore {
         mStorIOContentResolver.put().objects(employees).prepare().executeAsBlocking();
     }
 
-    public Observable<List<Assignment>> getUserAssignments(int employeeId) {
-        Log.d("UserEvents", "Getting events for authenticated user");
+    public Observable<Event> getUserEvents(int eventId) {
+        Log.d("UserEvents", "Getting events by id");
 
-        return mAssignmentStorIOContentResolver.get()
-                .listOfObjects(Assignment.class)
+        return mEventStorIOContentResolver.get()
+                .object(Event.class)
                 .withQuery(Query.builder()
-                        .uri(AssignmentDatabaseContract.Assignment.CONTENT_URI)
-                        .where("rater = ?")
-                        .whereArgs(employeeId)
+                        .uri(EventDatabaseContract.Event.CONTENT_URI)
+                        .where("id = ?")
+                        .whereArgs(eventId)
                         .build()
                 ).prepare()
                 .asRxObservable();
@@ -181,6 +181,20 @@ public class AppLocalDataStore implements AppDataStore {
 
     public void saveAssignmentToDatabase(List<Assignment> assignments) {
         mAssignmentStorIOContentResolver.put().objects(assignments).prepare().executeAsBlocking();
+    }
+
+    public Observable<List<Assignment>> getUserAssignments(int employeeId) {
+        Log.d("Assignments", "Getting assignments by authenticated user");
+
+        return mAssignmentStorIOContentResolver.get()
+                .listOfObjects(Assignment.class)
+                .withQuery(Query.builder()
+                        .uri(AssignmentDatabaseContract.Assignment.CONTENT_URI)
+                        .where("rater = ?")
+                        .whereArgs(employeeId)
+                        .build()
+                ).prepare()
+                .asRxObservable();
     }
 
     @Override
