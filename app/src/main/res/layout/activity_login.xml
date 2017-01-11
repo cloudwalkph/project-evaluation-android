@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/atv_email"
+                    android:id="@+id/email_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_password"
+                    android:id="@+id/password_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
