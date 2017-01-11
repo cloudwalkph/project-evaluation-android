@@ -6,6 +6,7 @@ import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.loginscreen.LoginScreenPresenter;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
     @Override
     public void getAssignments() {
-        mSubscription = mAppRepository.getUserAssignments(23)
+        mSubscription = mAppRepository.getUserAssignments((int) LoginScreenPresenter.mCurrentEmployee.getId())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Assignment>>() {

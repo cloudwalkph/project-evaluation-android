@@ -22,7 +22,7 @@ public class LoginScreenPresenter implements LoginScreenContract.Presenter {
     private AppRepository mAppRepository;
     private LoginScreenContract.View mView;
 
-    public LoginScreenPresenter(LoginScreenContract.View mView) {
+    public LoginScreenPresenter(AppRepository mAppRepository, LoginScreenContract.View mView) {
         this.mAppRepository = mAppRepository;
         this.mView = mView;
         this.mView.setPresenter(this);
@@ -30,6 +30,7 @@ public class LoginScreenPresenter implements LoginScreenContract.Presenter {
 
     @Override
     public void attemptLogin(String email, String password) {
+
         mSubscription = mAppRepository.attemptLogin(email, password)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
@@ -37,6 +38,7 @@ public class LoginScreenPresenter implements LoginScreenContract.Presenter {
                     @Override
                     public void onCompleted() {
                         Log.d("LOGIN", "Successfully logged in");
+                        mView.loginComplete();
                     }
 
                     @Override

@@ -141,14 +141,12 @@ public class AppLocalDataStore implements AppDataStore {
     public Observable<Employee> attemptLogin(String email, String password) {
         Log.d("Login Employee", "Getting Employee by id");
 
-        return mEventStorIOContentResolver.get()
+        return mStorIOContentResolver.get()
                 .object(Employee.class)
                 .withQuery(Query.builder()
                         .uri(EmployeeDatabaseContract.Employee.CONTENT_URI)
-                        .where("email = ?")
-                        .whereArgs(email)
-                        .where("password = ?")
-                        .whereArgs(password)
+                        .where("email = ? AND password = ?")
+                        .whereArgs(email, password)
                         .build()
                 ).prepare()
                 .asRxObservable();
