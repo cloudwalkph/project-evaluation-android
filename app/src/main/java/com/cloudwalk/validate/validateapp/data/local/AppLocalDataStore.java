@@ -152,6 +152,20 @@ public class AppLocalDataStore implements AppDataStore {
                 .asRxObservable();
     }
 
+    public Observable<Employee> getEmployeeById(int employeeId) {
+        Log.d("Employee", "Getting Employee by id");
+
+        return mStorIOContentResolver.get()
+                .object(Employee.class)
+                .withQuery(Query.builder()
+                        .uri(EmployeeDatabaseContract.Employee.CONTENT_URI)
+                        .where("id = ?")
+                        .whereArgs(employeeId)
+                        .build()
+                ).prepare()
+                .asRxObservable();
+    }
+
     public Observable<Question> getQuestionById(int questionId, String category) {
         Log.d("Question", "Get question by id");
 

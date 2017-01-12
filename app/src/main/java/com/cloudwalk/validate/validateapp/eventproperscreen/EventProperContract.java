@@ -20,5 +20,6 @@ public class EventProperContract {
 
     interface Presenter extends BasePresenter {
         void getQuestionById(int questionId, String category);
+        void getEmployeeById(int employeeId);
     }
 }

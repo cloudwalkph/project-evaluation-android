@@ -114,11 +114,20 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
 
     @Override
     public void getQuestions(String category) {
+        int requested = 0;
         for (Assignment assignment : MainActivity.mAssignments) {
-            Log.i("MAINSCREEN ASSIGNMENT", assignment.getQevent().toString());
+
+            if (EventProperActivity.mCurrentEvent.getId() != Integer.parseInt(assignment.getQevent())) {
+                continue;
+            }
 
             // Get the event
             try {
+                if (requested == 0) {
+                    mPresenter.getEmployeeById(Integer.parseInt(assignment.getQratee()));
+                    requested = 1;
+                }
+
                 mPresenter.getQuestionById(Integer.parseInt(assignment.getQnum()), category);
             } catch (NumberFormatException e) {
 
@@ -128,7 +137,6 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
 
     @Override
     public void addQuestion(Question question) {
-        Log.i("Question", question.getQname().toString());
         questions.add(question);
     }
 

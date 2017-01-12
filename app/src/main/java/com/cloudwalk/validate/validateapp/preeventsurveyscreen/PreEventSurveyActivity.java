@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionFragment;
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
@@ -86,7 +87,7 @@ public class PreEventSurveyActivity extends AppCompatActivity {
             }
         });
 
-        changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
+        changeUi(QuestionFragment.mRatee.getDepartment());
 
     }
 
@@ -99,16 +100,6 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private List<Fragment> getFragments(){
-        List<Fragment> fList = new ArrayList<Fragment>();
-
-        fList.add(MyFragment.newInstance("Pre Event"));
-        fList.add(MyFragment.newInstance("Fragment 2"));
-        fList.add(MyFragment.newInstance("Fragment 3"));
-
-        return fList;
     }
 
     @Override

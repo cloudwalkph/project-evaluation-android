@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Answer;
+import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class QuestionFragment extends Fragment {
     private int mPosition;
     private static final String POSITION_MESSAGE = "position";
     public static List<Question> mQuestions;
+    public static Employee mRatee;
 
     @Bind(R.id.question_details) TextView mQuestion;
 
