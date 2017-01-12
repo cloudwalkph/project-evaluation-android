@@ -106,7 +106,6 @@ public class EventsAdapter extends
             Event event = mEvents.get(position);
 
             EventProperActivity.mCurrentEvent = event;
-            PreEventSurveyActivity.mCurrentEvent = event;
             Intent intent = new Intent(getContext(), EventProperActivity.class);
             getContext().startActivity(intent);
         }

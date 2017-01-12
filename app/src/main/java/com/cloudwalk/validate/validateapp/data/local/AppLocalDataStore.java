@@ -160,7 +160,7 @@ public class AppLocalDataStore implements AppDataStore {
                 .withQuery(Query.builder()
                         .uri(QuestionDatabaseContract.Question.CONTENT_URI)
                         .where("id = ? AND category = ?")
-                        .whereArgs(questionId)
+                        .whereArgs(questionId, category)
                         .build()
                 ).prepare()
                 .asRxObservable();

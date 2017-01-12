@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.cloudwalk.validate.validateapp.App;
 import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionFragment;
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
@@ -40,6 +41,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
     public LinearLayout mPostEventLayout;
 
     private EventProperContract.Presenter mPresenter;
+    public Intent mEventIntent;
 
     @Inject
     AppRepository repository;
@@ -50,6 +52,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
         setContentView(R.layout.activity_event_proper);
         setTitle(mCurrentEvent.getName());
 
+        App.getAppComponent().inject(this);
         new EventProperPresenter(repository, this);
 
         questions = new ArrayList<Question>();
@@ -59,8 +62,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
             @Override
             public void onClick(View view) {
                 getQuestions("pre");
-                Intent intent = new Intent(getApplicationContext(), PreEventSurveyActivity.class);
-                startActivity(intent);
+                mEventIntent = new Intent(getApplicationContext(), PreEventSurveyActivity.class);
             }
         });
 
@@ -69,8 +71,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
             @Override
             public void onClick(View view) {
                 getQuestions("eprop");
-                Intent intent = new Intent(getApplicationContext(), EventProperSurveyActivity.class);
-                startActivity(intent);
+                mEventIntent = new Intent(getApplicationContext(), EventProperSurveyActivity.class);
             }
         });
 
@@ -80,7 +81,6 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
             public void onClick(View view) {
                 getQuestions("post");
                 Intent intent = new Intent(getApplicationContext(), PostEventSurveyActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -118,7 +118,11 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
             Log.i("MAINSCREEN ASSIGNMENT", assignment.getQevent().toString());
 
             // Get the event
-            mPresenter.getQuestionById(Integer.parseInt(assignment.getQevent()), category);
+            try {
+                mPresenter.getQuestionById(Integer.parseInt(assignment.getQnum()), category);
+            } catch (NumberFormatException e) {
+
+            }
         }
     }
 
@@ -131,5 +135,6 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
     @Override
     public void getQuestionsCompleted() {
         QuestionFragment.mQuestions = questions;
+        startActivity(mEventIntent);
     }
 }
