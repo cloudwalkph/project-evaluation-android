@@ -100,12 +100,16 @@ public class PreEventSurveyActivity extends AppCompatActivity {
 
     public void changeUi(String department){
         switch( department ){
-            case "Account Executive":
-                mDepartmentTitle.setText("Account Executive");
+            case "Accounting":
+                mDepartmentTitle.setText("Accounting");
                 mEventToolbar.setBackgroundResource(R.color.accountsColor);
                 break;
-            case "Operations":
-                mDepartmentTitle.setText("Operations");
+            case "Accounts":
+                mDepartmentTitle.setText("Accounts");
+                mEventToolbar.setBackgroundResource(R.color.accountsColor);
+                break;
+            case "CMTUVA":
+                mDepartmentTitle.setText("CMTUVA");
                 mEventToolbar.setBackgroundResource(R.color.cmtuvaColor);
                 break;
             case "Negotiator Assesment":
@@ -116,17 +120,17 @@ public class PreEventSurveyActivity extends AppCompatActivity {
                 mDepartmentTitle.setText("Project Manager's");
                 mEventToolbar.setBackgroundResource(R.color.pmColor);
                 break;
-            case "Team Leader Rating":
-                mDepartmentTitle.setText("Team Leader's Rating");
-                mEventToolbar.setBackgroundResource(R.color.stpColor);
+            case "Activations":
+                mDepartmentTitle.setText("Activations");
+                mEventToolbar.setBackgroundResource(R.color.actgColor);
                 break;
             case "Setup":
                 mDepartmentTitle.setText("Setup");
                 mEventToolbar.setBackgroundResource(R.color.stpColor);
                 break;
-            case "Setup Leader Assesment":
-                mDepartmentTitle.setText("Setup Leader Assesment");
-                mEventToolbar.setBackgroundResource(R.color.stpColor);
+            case "CEO":
+                mDepartmentTitle.setText("CEO");
+                mEventToolbar.setBackgroundResource(R.color.ceoColor);
                 break;
             case "Production":
                 mDepartmentTitle.setText("Production");
@@ -136,8 +140,8 @@ public class PreEventSurveyActivity extends AppCompatActivity {
                 mDepartmentTitle.setText("Inventory");
                 mEventToolbar.setBackgroundResource(R.color.invColor);
                 break;
-            case "Human Resource Department":
-                mDepartmentTitle.setText("Human Resource Department");
+            case "Human Resources ":
+                mDepartmentTitle.setText("Human Resources ");
                 mEventToolbar.setBackgroundResource(R.color.hrColor);
                 break;
         }
