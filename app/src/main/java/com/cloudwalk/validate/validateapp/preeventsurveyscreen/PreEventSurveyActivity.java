@@ -2,28 +2,19 @@ package com.cloudwalk.validate.validateapp.preeventsurveyscreen;
 
 import android.content.Context;
 import android.support.design.widget.AppBarLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionAdapter;
 import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionFragment;
 import com.cloudwalk.validate.validateapp.R;
-import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
-import com.cloudwalk.validate.validateapp.loginscreen.LoginScreenPresenter;
 
 
 import butterknife.Bind;

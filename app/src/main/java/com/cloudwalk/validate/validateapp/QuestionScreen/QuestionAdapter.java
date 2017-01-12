@@ -1,4 +1,4 @@
-package com.cloudwalk.validate.validateapp.preeventsurveyscreen;
+package com.cloudwalk.validate.validateapp.QuestionScreen;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

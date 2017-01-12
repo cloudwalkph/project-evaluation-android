@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -19,7 +18,6 @@ import com.cloudwalk.validate.validateapp.eventpropersurveyscreen.EventProperSur
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
 import com.cloudwalk.validate.validateapp.posteventsurveyscreen.PostEventSurveyActivity;
 import com.cloudwalk.validate.validateapp.preeventsurveyscreen.PreEventSurveyActivity;
-import com.cloudwalk.validate.validateapp.preeventsurveyscreen.QuestionAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
