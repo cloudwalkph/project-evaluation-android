@@ -152,6 +152,20 @@ public class AppLocalDataStore implements AppDataStore {
                 .asRxObservable();
     }
 
+    public Observable<Question> getQuestionById(int questionId, String category) {
+        Log.d("Question", "Get question by id");
+
+        return mQuestionStorIOContentResolver.get()
+                .object(Question.class)
+                .withQuery(Query.builder()
+                        .uri(QuestionDatabaseContract.Question.CONTENT_URI)
+                        .where("id = ? AND category = ?")
+                        .whereArgs(questionId)
+                        .build()
+                ).prepare()
+                .asRxObservable();
+    }
+
     @Override
     public Observable<List<Event>> getEvents() {
         Log.d("LOCAL EVENTS","Loaded from local");

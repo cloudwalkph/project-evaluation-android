@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 import com.cloudwalk.validate.validateapp.loginscreen.LoginScreenPresenter;
 
 
@@ -30,15 +31,13 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class PreEventSurveyActivity extends AppCompatActivity {
 
-    public QuestionAdapter questionAdapter;
+    public QuestionAdapter mQuestionAdapter;
     public ViewPager mPager;
     @Bind(R.id.header_events_title) TextView mEventsTitle;
     @Bind(R.id.header_department) TextView mDepartmentTitle;
     @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
     @Bind(R.id.progressBar) ProgressBar pBar;
     int currentPage;
-
-    public static Event mCurrentEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +58,35 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         }
 
         pBar.setProgress(0);
-        mEventsTitle.setText(mCurrentEvent.getName());
+        mEventsTitle.setText(EventProperActivity.mCurrentEvent.getName());
 
-        List<Fragment> fragments = getFragments();
-
-        questionAdapter = new QuestionAdapter(getSupportFragmentManager(), fragments);
+        mQuestionAdapter = new QuestionAdapter(getSupportFragmentManager());
 
         mPager = (ViewPager)findViewById(R.id.viewpager);
-        mPager.setAdapter(questionAdapter);
+        mPager.setAdapter(mQuestionAdapter);
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentPage = position;
+                int curPosition = mPager.getCurrentItem() + 1;
+                int totalItems = mPager.getAdapter().getCount();
+                float progress = (float) curPosition / totalItems;
+                float pTotal = progress * 100;
+                pBar.setProgress((int) pTotal);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        changeUi(LoginScreenPresenter.mCurrentEmployee.getDepartment());
 
     }
 
