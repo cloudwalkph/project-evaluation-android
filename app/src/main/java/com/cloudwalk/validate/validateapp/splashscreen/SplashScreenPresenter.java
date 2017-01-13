@@ -3,6 +3,7 @@ package com.cloudwalk.validate.validateapp.splashscreen;
 import android.util.Log;
 
 import com.cloudwalk.validate.validateapp.data.AppRepository;
+import com.cloudwalk.validate.validateapp.data.local.models.Answer;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
@@ -336,6 +337,56 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
     }
 
     @Override
+    public void loadAnswerFromRemoteDataStore() {
+        new AppRemoteDataStore().getAnswers().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Answer>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("SPLASH", "Get Answer Complete");
+
+                        loadAnswer();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("SPLASH", e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List<Answer> answers) {
+
+                    }
+                });
+    }
+
+    @Override
+    public void loadAnswer() {
+        mSubscription = mAppRepository.getAnswers()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Answer>>() {
+                    @Override
+                    public void onCompleted() {
+                        Log.d("ANSWER PUT", "Answer Complete");
+                        mView.showAnswerCompleteSync();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("ANSWER PUT", e.toString());
+                        e.printStackTrace();
+                        mView.showError(e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List posts) {
+
+                    }
+                });
+    }
+
+    @Override
     public void subscribe() {
         loadEmployee();
         loadEvent();
@@ -343,6 +394,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
         loadAssignment();
         loadTeamLeader();
         loadNegotiator();
+        loadAnswer();
     }
 
     @Override
