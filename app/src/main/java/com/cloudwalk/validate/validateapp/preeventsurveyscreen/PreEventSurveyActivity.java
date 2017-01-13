@@ -62,7 +62,6 @@ public class PreEventSurveyActivity extends AppCompatActivity {
 
         mPager = (ViewPager)findViewById(R.id.viewpager);
         mPager.setAdapter(mQuestionAdapter);
-
         mMaximumQuestion.setText(String.valueOf(mPager.getAdapter().getCount()));
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
