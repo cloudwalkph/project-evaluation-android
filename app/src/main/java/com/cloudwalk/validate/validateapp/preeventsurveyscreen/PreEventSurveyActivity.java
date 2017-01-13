@@ -158,6 +158,7 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         if(page <= totalPage){
             vp_container.setCurrentItem(page, true);
             if(page == vp_container.getAdapter().getCount()){
+                EvaluationCompleteActivity.completeLabel = "Pre Event Evaluation Completed";
                 startActivity(new Intent(getApplicationContext(), EvaluationCompleteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
             }
