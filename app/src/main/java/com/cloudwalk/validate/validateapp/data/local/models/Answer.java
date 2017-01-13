@@ -11,23 +11,23 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
  * Created by nkmcheng on 09/01/2017.
  */
 
-//@StorIOSQLiteType(table = AnswerDatabaseContract.Answer.TABLE_NAME)
-//@StorIOContentResolverType(uri = AnswerDatabaseContract.Answer.CONTENT_URI_STRING)
+@StorIOSQLiteType(table = AnswerDatabaseContract.Answer.TABLE_NAME)
+@StorIOContentResolverType(uri = AnswerDatabaseContract.Answer.CONTENT_URI_STRING)
 public class Answer {
 
-//    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_ID, key = true)
-//    @StorIOContentResolverColumn(name = AnswerDatabaseContract.Answer.COLUMN_ID, key = true)
-//    @SerializedName("_id")
+    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_ID, key = true)
+    @StorIOContentResolverColumn(name = AnswerDatabaseContract.Answer.COLUMN_ID, key = true)
+    @SerializedName("_id")
     protected long id;
 
-//    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_CONTENT)
-//    @StorIOContentResolverColumn(name = AnswerDatabaseContract.Answer.COLUMN_CONTENT)
-//    @SerializedName("aneme")
+    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_CONTENT)
+    @StorIOContentResolverColumn(name = AnswerDatabaseContract.Answer.COLUMN_CONTENT)
+    @SerializedName("aneme")
     protected String content;
 
-//    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_QNUM)
-//    @StorIOContentResolverColumn(name = AnswerDatabaseContract.Answer.COLUMN_QNUM)
-//    @SerializedName("qnum")
+    @StorIOSQLiteColumn(name = AnswerDatabaseContract.Answer.COLUMN_QNUM)
+    @StorIOContentResolverColumn(name = AnswerDatabaseContract.Answer.COLUMN_QNUM)
+    @SerializedName("qnum")
     protected long qnum;
 
 
