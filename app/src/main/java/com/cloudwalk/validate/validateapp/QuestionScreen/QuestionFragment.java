@@ -28,6 +28,7 @@ public class QuestionFragment extends Fragment {
     private int mPosition;
     private static final String POSITION_MESSAGE = "position";
     public static List<Question> mQuestions;
+    public static List<Answer> mAnswer;
     public static Employee mRatee;
 
     @Bind(R.id.question_details) TextView mQuestion;
