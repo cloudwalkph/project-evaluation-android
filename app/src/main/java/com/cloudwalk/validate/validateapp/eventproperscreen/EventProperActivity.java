@@ -78,7 +78,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
             @Override
             public void onClick(View view) {
                 getQuestions("post");
-                Intent intent = new Intent(getApplicationContext(), PostEventSurveyActivity.class);
+                mEventIntent = new Intent(getApplicationContext(), PostEventSurveyActivity.class);
             }
         });
 
