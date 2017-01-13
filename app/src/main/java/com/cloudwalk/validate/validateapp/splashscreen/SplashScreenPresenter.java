@@ -388,13 +388,13 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void subscribe() {
+        loadAnswer();
         loadEmployee();
         loadEvent();
         loadQuestion();
         loadAssignment();
         loadTeamLeader();
         loadNegotiator();
-        loadAnswer();
     }
 
     @Override

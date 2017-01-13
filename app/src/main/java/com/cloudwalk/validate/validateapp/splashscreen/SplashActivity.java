@@ -118,12 +118,12 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
     }
 
     private void initSync() {
+        mPresenter.loadAnswerFromRemoteDataStore();
         mPresenter.loadEmployeeFromRemoteDataStore();
         mPresenter.loadEventFromRemoteDataStore();
         mPresenter.loadQuestionFromRemoteDataStore();
         mPresenter.loadAssignmentFromRemoteDataStore();
         mPresenter.loadTeamLeaderFromRemoteDataStore();
         mPresenter.loadNegotiatorFromRemoteDataStore();
-        mPresenter.loadAnswerFromRemoteDataStore();
     }
 }

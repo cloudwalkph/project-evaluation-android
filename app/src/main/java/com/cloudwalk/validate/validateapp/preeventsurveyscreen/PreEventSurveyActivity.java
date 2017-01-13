@@ -33,6 +33,8 @@ public class PreEventSurveyActivity extends AppCompatActivity {
     @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
     @Bind(R.id.progressBar) ProgressBar pBar;
     @Bind(R.id.viewpager) ViewPager vp_container;
+    @Bind(R.id.question_max) TextView mMaximumQuestion;
+    @Bind(R.id.question_min) TextView mMinimumQuestion;
     int currentPage;
 
     @Override
@@ -60,6 +62,9 @@ public class PreEventSurveyActivity extends AppCompatActivity {
 
         mPager = (ViewPager)findViewById(R.id.viewpager);
         mPager.setAdapter(mQuestionAdapter);
+
+        mMaximumQuestion.setText(String.valueOf(mPager.getAdapter().getCount()));
+
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -156,6 +161,7 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         int totalPage = vp_container.getAdapter().getCount();
         int page = getItem() + 1;
         if(page <= totalPage){
+            mMinimumQuestion.setText(String.valueOf(page+1));
             vp_container.setCurrentItem(page, true);
             if(page == vp_container.getAdapter().getCount()){
                 EvaluationCompleteActivity.completeLabel = "Pre Event Evaluation Completed";
@@ -169,6 +175,7 @@ public class PreEventSurveyActivity extends AppCompatActivity {
     public void prevPage(){
         int page = getItem() - 1;
         if(page >= 0){
+            mMinimumQuestion.setText(String.valueOf(page+1));
             vp_container.setCurrentItem(page, true);
         }
     }
