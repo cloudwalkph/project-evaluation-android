@@ -159,14 +159,13 @@ public class PreEventSurveyActivity extends AppCompatActivity {
     public void nextPage(){
         int totalPage = vp_container.getAdapter().getCount();
         int page = getItem() + 1;
-        if(page <= totalPage){
+        if(page < totalPage){
             mMinimumQuestion.setText(String.valueOf(page+1));
             vp_container.setCurrentItem(page, true);
-            if(page == vp_container.getAdapter().getCount()){
-                EvaluationCompleteActivity.completeLabel = "Pre Event Evaluation Completed";
-                startActivity(new Intent(getApplicationContext(), EvaluationCompleteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                finish();
-            }
+        }else if(page == totalPage){
+            EvaluationCompleteActivity.completeLabel = "Pre Event Evaluation Completed";
+            startActivity(new Intent(getApplicationContext(), EvaluationCompleteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
         }
     }
 

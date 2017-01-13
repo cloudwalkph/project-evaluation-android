@@ -32,6 +32,8 @@ public class EventProperSurveyActivity extends AppCompatActivity {
     @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
     @Bind(R.id.progressBar) ProgressBar pBar;
     @Bind(R.id.viewpager) ViewPager vp_container;
+    @Bind(R.id.question_max) TextView mMaximumQuestion;
+    @Bind(R.id.question_min) TextView mMinimumQuestion;
     int currentPage;
 
     @Override
@@ -59,6 +61,7 @@ public class EventProperSurveyActivity extends AppCompatActivity {
 
         mPager = (ViewPager)findViewById(R.id.viewpager);
         mPager.setAdapter(mQuestionAdapter);
+        mMaximumQuestion.setText(String.valueOf(mPager.getAdapter().getCount()));
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -154,13 +157,13 @@ public class EventProperSurveyActivity extends AppCompatActivity {
     public void nextPage(){
         int totalPage = vp_container.getAdapter().getCount();
         int page = getItem() + 1;
-        if(page <= totalPage){
+        if(page < totalPage){
+            mMinimumQuestion.setText(String.valueOf(page+1));
             vp_container.setCurrentItem(page, true);
-            if(page == vp_container.getAdapter().getCount()){
-                EvaluationCompleteActivity.completeLabel = "Event Proper Evaluation Completed";
-                startActivity(new Intent(getApplicationContext(), EvaluationCompleteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                finish();
-            }
+        }else if(page == totalPage){
+            EvaluationCompleteActivity.completeLabel = "Event Proper Evaluation Completed";
+            startActivity(new Intent(getApplicationContext(), EvaluationCompleteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+            finish();
         }
     }
 
@@ -168,6 +171,7 @@ public class EventProperSurveyActivity extends AppCompatActivity {
     public void prevPage(){
         int page = getItem() - 1;
         if(page >= 0){
+            mMinimumQuestion.setText(String.valueOf(page+1));
             vp_container.setCurrentItem(page, true);
         }
     }
