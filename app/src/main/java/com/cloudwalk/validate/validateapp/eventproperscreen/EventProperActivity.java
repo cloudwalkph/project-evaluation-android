@@ -3,7 +3,10 @@ package com.cloudwalk.validate.validateapp.eventproperscreen;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -24,6 +27,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.Bind;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -49,6 +53,16 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_proper);
         setTitle(mCurrentEvent.getName());
+
+        // toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.event_proper_toolbar);
+        setSupportActionBar(toolbar);
+
+        // add back arrow to toolbar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         App.getAppComponent().inject(this);
         new EventProperPresenter(repository, this);
@@ -81,7 +95,17 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
                 mEventIntent = new Intent(getApplicationContext(), PostEventSurveyActivity.class);
             }
         });
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
