@@ -29,6 +29,8 @@ public class Provider extends ContentProvider {
     private static final int TEAMLEADER_DIR = 111;
     private static final int NEGOTIATOR_ITEM = 112;
     private static final int NEGOTIATOR_DIR = 113;
+    private static final int ANSWER_ITEM = 114;
+    private static final int ANSWER_DIR = 115;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private DatabaseHelper mDbHelper;
@@ -57,6 +59,9 @@ public class Provider extends ContentProvider {
 
         matcher.addURI(authority, NegotiatorDatabaseContract.PATH_NEGOTIATOR + "/#", NEGOTIATOR_ITEM);
         matcher.addURI(authority, NegotiatorDatabaseContract.PATH_NEGOTIATOR, NEGOTIATOR_DIR);
+
+        matcher.addURI(authority, AnswerDatabaseContract.PATH_ANSWER + "/#", ANSWER_ITEM);
+        matcher.addURI(authority, AnswerDatabaseContract.PATH_ANSWER, ANSWER_DIR);
 
         return matcher;
     }
@@ -226,6 +231,28 @@ public class Provider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case ANSWER_DIR:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        AnswerDatabaseContract.Answer.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case ANSWER_ITEM:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        AnswerDatabaseContract.Answer.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown Uri " + uri);
         }
@@ -267,6 +294,10 @@ public class Provider extends ContentProvider {
                 return NegotiatorDatabaseContract.Negotiator.CONTENT_USER_ITEM_TYPE;
             case NEGOTIATOR_DIR:
                 return NegotiatorDatabaseContract.Negotiator.CONTENT_USER_TYPE;
+            case ANSWER_ITEM:
+                return AnswerDatabaseContract.Answer.CONTENT_USER_ITEM_TYPE;
+            case ANSWER_DIR:
+                return AnswerDatabaseContract.Answer.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -334,6 +365,14 @@ public class Provider extends ContentProvider {
                     throw new SQLException("Negotiator Failed to insert row " + uri);
                 }
                 break;
+            case ANSWER_DIR:
+                long answer_id = db.insert(AnswerDatabaseContract.Answer.TABLE_NAME, null, contentValues);
+                if (answer_id > 0) {
+                    returnUri = AnswerDatabaseContract.Answer.buildAnswerUri(answer_id);
+                } else {
+                    throw new SQLException("Answer Failed to insert row " + uri);
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -366,6 +405,9 @@ public class Provider extends ContentProvider {
                 break;
             case NEGOTIATOR_DIR:
                 rowsDeleted = db.delete(NegotiatorDatabaseContract.Negotiator.TABLE_NAME, selection, selectionArgs);
+                break;
+            case ANSWER_DIR:
+                rowsDeleted = db.delete(AnswerDatabaseContract.Answer.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
@@ -401,6 +443,9 @@ public class Provider extends ContentProvider {
                 break;
             case NEGOTIATOR_DIR:
                 update = db.update(NegotiatorDatabaseContract.Negotiator.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case ANSWER_DIR:
+                update = db.update(AnswerDatabaseContract.Answer.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);

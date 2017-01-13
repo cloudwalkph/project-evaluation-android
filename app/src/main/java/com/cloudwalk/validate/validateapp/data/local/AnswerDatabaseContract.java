@@ -26,13 +26,13 @@ public class AnswerDatabaseContract {
 
         public static final String COLUMN_ID = "id";
         public static final String COLUMN_CONTENT = "content";
-        public static final String COLUMN_QNUM = "qnum";
+        public static final String COLUMN_QNUM = "question_id";
 
         public static String getAnswerCreateQuery() {
             return "CREATE TABLE " + TABLE_NAME + " (" +
                     COLUMN_ID + " LONG NOT NULL PRIMARY KEY, " +
-                    COLUMN_CONTENT + " TEXT NOT NULL , " +
-                    COLUMN_QNUM + " LONG NOT NULL" + ");";
+                    COLUMN_CONTENT + " TEXT, " +
+                    COLUMN_QNUM + " LONG" + ");";
         }
 
         public static String getAnswerDeleteQuery() {
