@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
                 startActivity(intent);
                 SplashActivity.this.finish();
             }
-        }, 2000);
+        }, 10000);
 
         new SplashScreenPresenter(repository, this);
 
