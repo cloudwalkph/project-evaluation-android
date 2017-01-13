@@ -151,7 +151,6 @@ public class PreEventSurveyActivity extends AppCompatActivity {
         }
     }
 
-
     @OnClick(R.id.nxtBtn)
     public void nextPage(){
         int totalPage = vp_container.getAdapter().getCount();

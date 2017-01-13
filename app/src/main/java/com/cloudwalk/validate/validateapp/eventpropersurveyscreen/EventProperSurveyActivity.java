@@ -1,6 +1,7 @@
 package com.cloudwalk.validate.validateapp.eventpropersurveyscreen;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,23 +14,24 @@ import android.widget.TextView;
 import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionAdapter;
 import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionFragment;
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.evaluationcompletescreen.EvaluationCompleteActivity;
 import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class EventProperSurveyActivity extends AppCompatActivity {
 
     public QuestionAdapter mQuestionAdapter;
     public ViewPager mPager;
-    @Bind(R.id.header_events_title)
-    TextView mEventsTitle;
+
+    @Bind(R.id.header_events_title) TextView mEventsTitle;
     @Bind(R.id.header_department) TextView mDepartmentTitle;
-    @Bind(R.id.toolbar_container)
-    AppBarLayout mEventToolbar;
-    @Bind(R.id.progressBar)
-    ProgressBar pBar;
+    @Bind(R.id.toolbar_container) AppBarLayout mEventToolbar;
+    @Bind(R.id.progressBar) ProgressBar pBar;
+    @Bind(R.id.viewpager) ViewPager vp_container;
     int currentPage;
 
     @Override
@@ -146,5 +148,29 @@ public class EventProperSurveyActivity extends AppCompatActivity {
                 mEventToolbar.setBackgroundResource(R.color.hrColor);
                 break;
         }
+    }
+    @OnClick(R.id.nxtBtn)
+    public void nextPage(){
+        int totalPage = vp_container.getAdapter().getCount();
+        int page = getItem() + 1;
+        if(page <= totalPage){
+            vp_container.setCurrentItem(page, true);
+            if(page == vp_container.getAdapter().getCount()){
+                startActivity(new Intent(getApplicationContext(), EvaluationCompleteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                finish();
+            }
+        }
+    }
+
+    @OnClick(R.id.prevBtn)
+    public void prevPage(){
+        int page = getItem() - 1;
+        if(page >= 0){
+            vp_container.setCurrentItem(page, true);
+        }
+    }
+
+    private int getItem() {
+        return vp_container.getCurrentItem();
     }
 }
