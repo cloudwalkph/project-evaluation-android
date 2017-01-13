@@ -29,8 +29,7 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".eventproperscreen.EventProperActivity"
-            android:theme="@style/AppTheme" />
+            android:name=".eventproperscreen.EventProperActivity" />
 
         <activity android:name=".preeventsurveyscreen.PreEventSurveyActivity" />
         <activity android:name=".eventpropersurveyscreen.EventProperSurveyActivity" />
