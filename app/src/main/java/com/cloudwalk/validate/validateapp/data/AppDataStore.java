@@ -1,6 +1,7 @@
 package com.cloudwalk.validate.validateapp.data;
 
 
+import com.cloudwalk.validate.validateapp.data.local.models.Answer;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
@@ -24,4 +25,5 @@ public interface AppDataStore {
 //    Observable<List<Assignment>> getUserAssignments(int employeeId);
     Observable<List<TeamLeader>> getTeamLeaders();
     Observable<List<Negotiator>> getNegotiators();
+    Observable<List<Answer>> getAnswers();
 }

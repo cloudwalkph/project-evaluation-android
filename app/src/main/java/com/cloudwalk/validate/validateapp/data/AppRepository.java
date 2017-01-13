@@ -1,6 +1,7 @@
 package com.cloudwalk.validate.validateapp.data;
 
 import com.cloudwalk.validate.validateapp.data.local.AppLocalDataStore;
+import com.cloudwalk.validate.validateapp.data.local.models.Answer;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
@@ -145,6 +146,17 @@ public class AppRepository implements AppDataStore {
                     @Override
                     public Boolean call(List<Negotiator> negotiators) {
                         return negotiators != null;
+                    }
+                });
+    }
+
+    @Override
+    public Observable<List<Answer>> getAnswers() {
+        return Observable.concat(mAppLocalDataStore.getAnswers(), mAppRemoteDataStore.getAnswers())
+                .first(new Func1<List<Answer>, Boolean>() {
+                    @Override
+                    public Boolean call(List<Answer> answers) {
+                        return answers != null;
                     }
                 });
     }
