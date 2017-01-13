@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="35sp"
                 android:textStyle="bold"
+                android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
                 android:text="Name"/>
 

@@ -35,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="Dove School Event"
                 android:textSize="30dp"
+                android:textAllCaps="true"
                 android:textAppearance="@style/montserratBold"
                 android:textColor="@android:color/white"/>
             <TextView
@@ -43,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:text="Accounts"
                 android:textSize="30dp"
+                android:textAllCaps="true"
                 android:textAppearance="@style/montserrat"
                 android:textColor="@android:color/white"/>
 
