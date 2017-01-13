@@ -149,6 +149,7 @@ public class EventProperSurveyActivity extends AppCompatActivity {
                 break;
         }
     }
+
     @OnClick(R.id.nxtBtn)
     public void nextPage(){
         int totalPage = vp_container.getAdapter().getCount();
