@@ -38,6 +38,8 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void loadEmployeeFromRemoteDataStore() {
+        mView.setProgressMessage("Getting employees from remote server");
+
         new AppRemoteDataStore().getEmployees().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Employee>>() {
@@ -45,6 +47,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Employees Complete");
 //                        loadEmployee();
+                        loadEventFromRemoteDataStore();
                     }
 
                     @Override
@@ -87,6 +90,8 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void loadEventFromRemoteDataStore() {
+        mView.setProgressMessage("Getting events from remote server");
+
         new AppRemoteDataStore().getEvents().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Event>>() {
@@ -95,6 +100,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                         Log.d("SPLASH", "Get Events Complete");
 
 //                        loadEvent();
+                        loadQuestionFromRemoteDataStore();
                     }
 
                     @Override
@@ -137,6 +143,8 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void loadQuestionFromRemoteDataStore() {
+        mView.setProgressMessage("Getting questions from remote server");
+
         new AppRemoteDataStore().getQuestions().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Question>>() {
@@ -145,6 +153,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                         Log.d("SPLASH", "Get Questions Complete");
 
 //                        loadQuestion();
+                        loadAssignmentFromRemoteDataStore();
                     }
 
                     @Override
@@ -187,6 +196,8 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void loadAssignmentFromRemoteDataStore() {
+        mView.setProgressMessage("Getting assignments from remote server");
+
         new AppRemoteDataStore().getAssignments().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Assignment>>() {
@@ -195,6 +206,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                         Log.d("SPLASH", "Get Assignment Complete");
 
 //                        loadAssignment();
+                        loadAnswerFromRemoteDataStore();
                     }
 
                     @Override
@@ -337,6 +349,8 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void loadAnswerFromRemoteDataStore() {
+        mView.setProgressMessage("Getting answers from remote server");
+
         new AppRemoteDataStore().getAnswers().observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Answer>>() {
@@ -345,6 +359,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                         Log.d("SPLASH", "Get Answer Complete");
 
 //                        loadAnswer();
+                        mView.syncFinish();
                     }
 
                     @Override

@@ -16,6 +16,9 @@ public class SplashScreenContract {
 //        void showTeamLeaderCompleteSync();
 //        void showNegotiatorCompleteSync();
 //        void showAnswerCompleteSync();
+
+        void setProgressMessage(String message);
+        void syncFinish();
         void showError(String error);
 
         void moveToLoginScreen();
