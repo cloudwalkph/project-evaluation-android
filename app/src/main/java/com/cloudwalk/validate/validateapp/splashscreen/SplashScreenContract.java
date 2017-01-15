@@ -26,15 +26,15 @@ public class SplashScreenContract {
         void loadEventFromRemoteDataStore();
         void loadQuestionFromRemoteDataStore();
         void loadAssignmentFromRemoteDataStore();
-        void loadTeamLeaderFromRemoteDataStore();
-        void loadNegotiatorFromRemoteDataStore();
+//        void loadTeamLeaderFromRemoteDataStore();
+//        void loadNegotiatorFromRemoteDataStore();
         void loadAnswerFromRemoteDataStore();
         void loadEmployee();
         void loadEvent();
         void loadQuestion();
         void loadAssignment();
-        void loadTeamLeader();
-        void loadNegotiator();
+//        void loadTeamLeader();
+//        void loadNegotiator();
         void loadAnswer();
     }
 }

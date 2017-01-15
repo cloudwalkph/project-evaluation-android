@@ -236,105 +236,105 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 });
     }
 
-    @Override
-    public void loadTeamLeaderFromRemoteDataStore() {
-        new AppRemoteDataStore().getTeamLeaders().observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<TeamLeader>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("SPLASH", "Get Team leader Complete");
+//    @Override
+//    public void loadTeamLeaderFromRemoteDataStore() {
+//        new AppRemoteDataStore().getTeamLeaders().observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<TeamLeader>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("SPLASH", "Get Team leader Complete");
+//
+//                        loadTeamLeader();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("SPLASH", e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List<TeamLeader> teamLeaders) {
+//
+//                    }
+//                });
+//    }
 
-                        loadTeamLeader();
-                    }
+//    @Override
+//    public void loadTeamLeader() {
+//        mSubscription = mAppRepository.getTeamLeaders()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<TeamLeader>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("TEAM LEADER PUT", "Team leader Complete");
+//                        mView.showTeamLeaderCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("TEAM LEADER PUT", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("SPLASH", e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List<TeamLeader> teamLeaders) {
-
-                    }
-                });
-    }
-
-    @Override
-    public void loadTeamLeader() {
-        mSubscription = mAppRepository.getTeamLeaders()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<TeamLeader>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("TEAM LEADER PUT", "Team leader Complete");
-                        mView.showTeamLeaderCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("TEAM LEADER PUT", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
-
-    @Override
-    public void loadNegotiatorFromRemoteDataStore() {
-        new AppRemoteDataStore().getNegotiators().observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Negotiator>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("SPLASH", "Get Negotiator Complete");
-
-                        loadNegotiator();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("SPLASH", e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List<Negotiator> negotiators) {
-
-                    }
-                });
-    }
-
-    @Override
-    public void loadNegotiator() {
-        mSubscription = mAppRepository.getNegotiators()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Negotiator>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("NEGOTIATOR PUT", "Negotiator Complete");
-                        mView.showNegotiatorCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("NEGOTIATOR PUT", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
+//    @Override
+//    public void loadNegotiatorFromRemoteDataStore() {
+//        new AppRemoteDataStore().getNegotiators().observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Negotiator>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("SPLASH", "Get Negotiator Complete");
+//
+//                        loadNegotiator();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("SPLASH", e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List<Negotiator> negotiators) {
+//
+//                    }
+//                });
+//    }
+//
+//    @Override
+//    public void loadNegotiator() {
+//        mSubscription = mAppRepository.getNegotiators()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Negotiator>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("NEGOTIATOR PUT", "Negotiator Complete");
+//                        mView.showNegotiatorCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("NEGOTIATOR PUT", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
     @Override
     public void loadAnswerFromRemoteDataStore() {
@@ -388,13 +388,13 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
 
     @Override
     public void subscribe() {
-        loadAnswer();
         loadEmployee();
         loadEvent();
         loadQuestion();
+        loadAnswer();
         loadAssignment();
-        loadTeamLeader();
-        loadNegotiator();
+//        loadTeamLeader();
+//        loadNegotiator();
     }
 
     @Override
