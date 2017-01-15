@@ -1,5 +1,6 @@
 package com.cloudwalk.validate.validateapp.mainscreen;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.facebook.stetho.Stetho;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,10 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
     private RecyclerView.LayoutManager mLayoutManager;
     private MainScreenContract.Presenter mPresenter;
 
+    public ProgressDialog mProgres;
+    public RecyclerView mRvEvents;
+    EventsAdapter adapter;
+
     @Inject
     AppRepository repository;
 
@@ -38,17 +44,21 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_event);
         setTitle("Choose an Event");
+        Stetho.initializeWithDefaults(this);
 
         //Inject dependency
         App.getAppComponent().inject(this);
         new MainScreenPresenter(repository, this);
 
-        RecyclerView mRvEvents = (RecyclerView) findViewById(R.id.rv_events);
+        mRvEvents = (RecyclerView) findViewById(R.id.rv_events);
 
         // Initialize events
         eventList = new ArrayList<Event>();
 
-        EventsAdapter adapter = new EventsAdapter(this, eventList);
+        mProgres = new ProgressDialog(MainActivity.this);
+        mProgres.setCancelable(false);
+
+        adapter = new EventsAdapter(this, eventList);
         mRvEvents.setAdapter(adapter);
         mRvEvents.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -65,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.logout:
+                return true;
+            case R.id.sync_btn:
+                mProgres.show();
+
+                mPresenter.loadEventFromRemoteDataStore();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -107,6 +122,34 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
     @Override
     public void getEvents(Event event) {
         Log.i("MAINSCREEN EVENT", event.getName());
-        eventList.add(event);
+
+        boolean found = false;
+        for (Event ev : eventList) {
+            if (ev.getId() == event.getId()) {
+                found = true;
+                break;
+            }
+        }
+
+        // Not found, add the event
+        if (! found) {
+            eventList.add(event);
+        }
+    }
+
+    @Override
+    public void setProgressMessage(String message) {
+        if (mProgres.isShowing() && mProgres != null) {
+            mProgres.setMessage(message);
+        }
+    }
+
+    @Override
+    public void syncFinish() {
+        if (mProgres.isShowing() && mProgres != null) {
+            mProgres.dismiss();
+            adapter.notifyDataSetChanged();
+//            mRvEvents.invalidate();
+        }
     }
 }

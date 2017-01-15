@@ -16,11 +16,23 @@ public class MainScreenContract {
     interface View extends BaseView<Presenter> {
         void getAssignments(List<Assignment> assignments);
         void getEvents(Event event);
+        void setProgressMessage(String message);
+        void syncFinish();
     }
 
     interface Presenter extends BasePresenter {
         void getAssignments();
         void getEventById(int eventId);
+        void loadEventFromRemoteDataStore();
+        void loadQuestionFromRemoteDataStore();
+        void loadAssignmentFromRemoteDataStore();
+        void loadAnswerFromRemoteDataStore();
+        void loadEvent();
+        void loadQuestion();
+        void loadAssignment();
+        void loadAnswer();
+
         void getAssginedEvents();
+
     }
 }
