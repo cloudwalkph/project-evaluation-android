@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
             case R.id.sync_btn:
                 mProgres.show();
 
-                mPresenter.loadEventFromRemoteDataStore();
+                mPresenter.loadEmployeeFromRemoteDataStore();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
