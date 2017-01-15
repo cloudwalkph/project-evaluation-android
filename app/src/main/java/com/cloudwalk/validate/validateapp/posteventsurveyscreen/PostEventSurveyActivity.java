@@ -150,6 +150,10 @@ public class PostEventSurveyActivity extends AppCompatActivity {
                 mDepartmentTitle.setText("Human Resources ");
                 mEventToolbar.setBackgroundResource(R.color.hrColor);
                 break;
+            default:
+                mDepartmentTitle.setText("Accounts");
+                mEventToolbar.setBackgroundResource(R.color.accountsColor);
+                break;
         }
     }
 
