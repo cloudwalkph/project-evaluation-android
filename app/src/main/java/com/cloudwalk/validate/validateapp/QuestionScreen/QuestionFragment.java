@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.cloudwalk.validate.validateapp.App;
@@ -91,14 +92,20 @@ public class QuestionFragment extends Fragment implements QuestionContract.View 
     public void getAnswer(List<Answer> answers) {
         mAnswers = answers;
 
+        RadioGroup mRadioGroup = new RadioGroup(this.getContext());
+        mRadioGroup.setOrientation(RadioGroup.VERTICAL);
+
+        mRadioGroup.setLayoutParams(ll.getLayoutParams());
+
         for (Answer answer : mAnswers) {
             RadioButton rb = new RadioButton(this.getContext());
 
             rb.setText(answer.getContent());
             rb.setTextSize(18);
             rb.setPadding(5, 10, 5, 10);
-            ll.addView(rb);
+            mRadioGroup.addView(rb);
         }
+        ll.addView(mRadioGroup);
     }
 
     @Override
