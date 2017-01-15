@@ -128,6 +128,16 @@ public class AppRepository implements AppDataStore {
                 });
     }
 
+    public Observable<List<Answer>> getAnswerByQuestionId(int questionId) {
+        return mAppLocalDataStore.getAnswerByQuestionId(questionId)
+                .first(new Func1<List<Answer>, Boolean>() {
+                    @Override
+                    public Boolean call(List<Answer> answer) {
+                        return answer != null;
+                    }
+                });
+    }
+
     @Override
     public Observable<List<TeamLeader>> getTeamLeaders() {
         return Observable.concat(mAppLocalDataStore.getTeamLeaders(), mAppRemoteDataStore.getTeamLeaders())
