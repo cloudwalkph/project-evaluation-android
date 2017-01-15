@@ -35,7 +35,6 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Stetho.initializeWithDefaults(this);
 
         //Inject dependency
         App.getAppComponent().inject(this);
