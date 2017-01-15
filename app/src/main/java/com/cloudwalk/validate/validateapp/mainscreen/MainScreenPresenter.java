@@ -96,6 +96,30 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     }
 
     @Override
+    public void loadEmployeeFromRemoteDataStore() {
+        mView.setProgressMessage("Syncing employees");
+
+        new AppRemoteDataStore().getEmployees().observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<List<Employee>>() {
+                    @Override
+                    public void onCompleted() {
+                        loadEventFromRemoteDataStore();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d("SPLASH REMOTE", e.toString());
+                    }
+
+                    @Override
+                    public void onNext(List<Employee> employees) {
+
+                    }
+                });
+    }
+
+    @Override
     public void loadEventFromRemoteDataStore() {
         mView.setProgressMessage("Syncing events");
 
@@ -104,7 +128,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 .subscribe(new Observer<List<Event>>() {
                     @Override
                     public void onCompleted() {
-                        loadEvent();
+                        loadAssignmentFromRemoteDataStore();
                     }
 
                     @Override
@@ -120,30 +144,6 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     }
 
     @Override
-    public void loadEvent() {
-        mSubscription = mAppRepository.getEvents()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Event>>() {
-                    @Override
-                    public void onCompleted() {
-                        loadAssignmentFromRemoteDataStore();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("SPLASH", e.toString());
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
-
-    @Override
     public void loadQuestionFromRemoteDataStore() {
         mView.setProgressMessage("Syncing questions");
 
@@ -152,7 +152,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                 .subscribe(new Observer<List<Question>>() {
                     @Override
                     public void onCompleted() {
-                        loadQuestion();
+                        loadAnswerFromRemoteDataStore();
                     }
 
                     @Override
@@ -168,57 +168,10 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
     }
 
     @Override
-    public void loadQuestion() {
-        mSubscription = mAppRepository.getQuestions()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Question>>() {
-                    @Override
-                    public void onCompleted() {
-                        loadAnswerFromRemoteDataStore();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("QUESTIONS PUT", e.toString());
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
-
-    @Override
     public void loadAssignmentFromRemoteDataStore() {
         mView.setProgressMessage("Syncing assignments");
 
         new AppRemoteDataStore().getAssignments().observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Assignment>>() {
-                    @Override
-                    public void onCompleted() {
-                        loadAssignment();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("SPLASH", e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List<Assignment> assignments) {
-
-                    }
-                });
-    }
-
-    @Override
-    public void loadAssignment() {
-        mSubscription = mAppRepository.getAssignments()
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.newThread())
                 .subscribe(new Observer<List<Assignment>>() {
                     @Override
@@ -228,12 +181,11 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("ASSIGNMENT PUT", e.toString());
-                        e.printStackTrace();
+                        Log.d("SPLASH", e.toString());
                     }
 
                     @Override
-                    public void onNext(List posts) {
+                    public void onNext(List<Assignment> assignments) {
 
                     }
                 });
@@ -250,7 +202,7 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Answer Complete");
 
-                        loadAnswer();
+                        mView.syncFinish();
                     }
 
                     @Override
@@ -260,29 +212,6 @@ public class MainScreenPresenter implements MainScreenContract.Presenter {
 
                     @Override
                     public void onNext(List<Answer> answers) {
-
-                    }
-                });
-    }
-
-    @Override
-    public void loadAnswer() {
-        mSubscription = mAppRepository.getAnswers()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Answer>>() {
-                    @Override
-                    public void onCompleted() {
-                        mView.syncFinish();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
 
                     }
                 });

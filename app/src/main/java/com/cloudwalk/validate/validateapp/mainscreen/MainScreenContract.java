@@ -23,14 +23,11 @@ public class MainScreenContract {
     interface Presenter extends BasePresenter {
         void getAssignments();
         void getEventById(int eventId);
+        void loadEmployeeFromRemoteDataStore();
         void loadEventFromRemoteDataStore();
         void loadQuestionFromRemoteDataStore();
         void loadAssignmentFromRemoteDataStore();
         void loadAnswerFromRemoteDataStore();
-        void loadEvent();
-        void loadQuestion();
-        void loadAssignment();
-        void loadAnswer();
 
         void getAssginedEvents();
 
