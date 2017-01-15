@@ -58,7 +58,7 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
 
         if (isNetworkAvailable()) {
             mProgress.show();
-            mPresenter.loadEventFromRemoteDataStore();
+            mPresenter.loadEmployeeFromRemoteDataStore();
         } else {
             Toast.makeText(this, "You are not connected to the internet", Toast.LENGTH_SHORT).show();
             syncFinish();
