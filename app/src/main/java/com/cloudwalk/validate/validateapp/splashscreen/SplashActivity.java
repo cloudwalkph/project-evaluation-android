@@ -47,7 +47,7 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
                 startActivity(intent);
                 SplashActivity.this.finish();
             }
-        }, 10000);
+        }, 5000);
 
         new SplashScreenPresenter(repository, this);
 
@@ -59,40 +59,40 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenCon
         mPresenter = presenter;
     }
 
-    @Override
-    public void showEmployeeCompleteSync() {
-        Toast.makeText(this, "Employee Sync Completed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showEventCompleteSync() {
-        Toast.makeText(this, "Event Sync Completed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showQuestionCompleteSync() {
-        Toast.makeText(this, "Question Sync Completed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showAssignmentCompleteSync() {
-        Toast.makeText(this, "Assignment Sync Completed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showTeamLeaderCompleteSync() {
-        Toast.makeText(this, "Team Leader Sync Completed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showNegotiatorCompleteSync() {
-        Toast.makeText(this, "Negotiator Sync Completed", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showAnswerCompleteSync() {
-        Toast.makeText(this, "Answer Sync Completed", Toast.LENGTH_SHORT).show();
-    }
+//    @Override
+//    public void showEmployeeCompleteSync() {
+//        Toast.makeText(this, "Employee Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void showEventCompleteSync() {
+//        Toast.makeText(this, "Event Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void showQuestionCompleteSync() {
+//        Toast.makeText(this, "Question Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void showAssignmentCompleteSync() {
+//        Toast.makeText(this, "Assignment Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void showTeamLeaderCompleteSync() {
+//        Toast.makeText(this, "Team Leader Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void showNegotiatorCompleteSync() {
+//        Toast.makeText(this, "Negotiator Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void showAnswerCompleteSync() {
+//        Toast.makeText(this, "Answer Sync Completed", Toast.LENGTH_SHORT).show();
+//    }
 
     @Override
     public void showError(String error) {

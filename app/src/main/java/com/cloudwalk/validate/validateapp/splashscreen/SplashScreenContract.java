@@ -9,13 +9,13 @@ import com.cloudwalk.validate.validateapp.BaseView;
 
 public class SplashScreenContract {
     interface View extends BaseView<Presenter> {
-        void showEmployeeCompleteSync();
-        void showEventCompleteSync();
-        void showQuestionCompleteSync();
-        void showAssignmentCompleteSync();
-        void showTeamLeaderCompleteSync();
-        void showNegotiatorCompleteSync();
-        void showAnswerCompleteSync();
+//        void showEmployeeCompleteSync();
+//        void showEventCompleteSync();
+//        void showQuestionCompleteSync();
+//        void showAssignmentCompleteSync();
+//        void showTeamLeaderCompleteSync();
+//        void showNegotiatorCompleteSync();
+//        void showAnswerCompleteSync();
         void showError(String error);
 
         void moveToLoginScreen();
@@ -29,12 +29,12 @@ public class SplashScreenContract {
 //        void loadTeamLeaderFromRemoteDataStore();
 //        void loadNegotiatorFromRemoteDataStore();
         void loadAnswerFromRemoteDataStore();
-        void loadEmployee();
-        void loadEvent();
-        void loadQuestion();
-        void loadAssignment();
+//        void loadEmployee();
+//        void loadEvent();
+//        void loadQuestion();
+//        void loadAssignment();
 //        void loadTeamLeader();
 //        void loadNegotiator();
-        void loadAnswer();
+//        void loadAnswer();
     }
 }

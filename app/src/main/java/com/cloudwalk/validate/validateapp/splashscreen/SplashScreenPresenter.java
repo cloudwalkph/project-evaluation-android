@@ -44,8 +44,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     @Override
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Employees Complete");
-
-                        loadEmployee();
+//                        loadEmployee();
                     }
 
                     @Override
@@ -60,31 +59,31 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 });
     }
 
-    @Override
-    public void loadEmployee() {
-        mSubscription = mAppRepository.getEmployees()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Employee>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("SPLASH", "Employees Complete");
-                        mView.showEmployeeCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("SPLASH LOCAL", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
+//    @Override
+//    public void loadEmployee() {
+//        mSubscription = mAppRepository.getEmployees()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Employee>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("SPLASH", "Employees Complete");
+//                        mView.showEmployeeCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("SPLASH LOCAL", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
     @Override
     public void loadEventFromRemoteDataStore() {
@@ -95,7 +94,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Events Complete");
 
-                        loadEvent();
+//                        loadEvent();
                     }
 
                     @Override
@@ -110,31 +109,31 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 });
     }
 
-    @Override
-    public void loadEvent() {
-        mSubscription = mAppRepository.getEvents()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Event>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("SPLASH", "Events Complete");
-                        mView.showEventCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("SPLASH", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
+//    @Override
+//    public void loadEvent() {
+//        mSubscription = mAppRepository.getEvents()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Event>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("SPLASH", "Events Complete");
+//                        mView.showEventCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("SPLASH", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
     @Override
     public void loadQuestionFromRemoteDataStore() {
@@ -145,7 +144,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Questions Complete");
 
-                        loadQuestion();
+//                        loadQuestion();
                     }
 
                     @Override
@@ -160,31 +159,31 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 });
     }
 
-    @Override
-    public void loadQuestion() {
-        mSubscription = mAppRepository.getQuestions()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Question>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("QUESTIONS PUT", "Question Complete");
-                        mView.showQuestionCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("QUESTIONS PUT", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
+//    @Override
+//    public void loadQuestion() {
+//        mSubscription = mAppRepository.getQuestions()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Question>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("QUESTIONS PUT", "Question Complete");
+//                        mView.showQuestionCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("QUESTIONS PUT", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
     @Override
     public void loadAssignmentFromRemoteDataStore() {
@@ -195,7 +194,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Assignment Complete");
 
-                        loadAssignment();
+//                        loadAssignment();
                     }
 
                     @Override
@@ -210,31 +209,31 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 });
     }
 
-    @Override
-    public void loadAssignment() {
-        mSubscription = mAppRepository.getAssignments()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Assignment>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("ASSIGNMENT PUT", "Assignment Complete");
-                        mView.showAssignmentCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("ASSIGNMENT PUT", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
+//    @Override
+//    public void loadAssignment() {
+//        mSubscription = mAppRepository.getAssignments()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Assignment>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("ASSIGNMENT PUT", "Assignment Complete");
+//                        mView.showAssignmentCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("ASSIGNMENT PUT", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
 //    @Override
 //    public void loadTeamLeaderFromRemoteDataStore() {
@@ -345,7 +344,7 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                     public void onCompleted() {
                         Log.d("SPLASH", "Get Answer Complete");
 
-                        loadAnswer();
+//                        loadAnswer();
                     }
 
                     @Override
@@ -360,39 +359,39 @@ public class SplashScreenPresenter implements SplashScreenContract.Presenter {
                 });
     }
 
-    @Override
-    public void loadAnswer() {
-        mSubscription = mAppRepository.getAnswers()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.newThread())
-                .subscribe(new Observer<List<Answer>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d("ANSWER PUT", "Answer Complete");
-                        mView.showAnswerCompleteSync();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d("ANSWER PUT", e.toString());
-                        e.printStackTrace();
-                        mView.showError(e.toString());
-                    }
-
-                    @Override
-                    public void onNext(List posts) {
-
-                    }
-                });
-    }
+//    @Override
+//    public void loadAnswer() {
+//        mSubscription = mAppRepository.getAnswers()
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(Schedulers.newThread())
+//                .subscribe(new Observer<List<Answer>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        Log.d("ANSWER PUT", "Answer Complete");
+//                        mView.showAnswerCompleteSync();
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//                        Log.d("ANSWER PUT", e.toString());
+//                        e.printStackTrace();
+//                        mView.showError(e.toString());
+//                    }
+//
+//                    @Override
+//                    public void onNext(List posts) {
+//
+//                    }
+//                });
+//    }
 
     @Override
     public void subscribe() {
-        loadEmployee();
-        loadEvent();
-        loadQuestion();
-        loadAnswer();
-        loadAssignment();
+//        loadEmployee();
+//        loadEvent();
+//        loadQuestion();
+//        loadAnswer();
+//        loadAssignment();
 //        loadTeamLeader();
 //        loadNegotiator();
     }
