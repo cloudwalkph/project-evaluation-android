@@ -2,6 +2,7 @@ package com.cloudwalk.validate.validateapp.mainscreen;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,8 @@ import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
+import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
+import com.cloudwalk.validate.validateapp.loginscreen.LoginActivity;
 import com.facebook.stetho.Stetho;
 
 import java.util.ArrayList;
@@ -75,6 +78,10 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.logout:
+                EventProperActivity.mCurrentEvent = null;
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
                 return true;
             case R.id.sync_btn:
                 mProgres.show();
