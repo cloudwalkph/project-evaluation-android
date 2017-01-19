@@ -17,6 +17,7 @@ import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Assignment;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.evaluationcompletescreen.EvaluationCompleteActivity;
 import com.cloudwalk.validate.validateapp.eventpropersurveyscreen.EventProperSurveyActivity;
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
 import com.cloudwalk.validate.validateapp.posteventsurveyscreen.PostEventSurveyActivity;
@@ -73,6 +74,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
         mPreEventLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EvaluationCompleteActivity.mRecords.clear();
                 getQuestions("pre");
                 mEventIntent = new Intent(getApplicationContext(), PreEventSurveyActivity.class);
             }
@@ -82,6 +84,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
         mEventProperLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EvaluationCompleteActivity.mRecords.clear();
                 getQuestions("eprop");
                 mEventIntent = new Intent(getApplicationContext(), EventProperSurveyActivity.class);
             }
@@ -91,6 +94,7 @@ public class EventProperActivity extends AppCompatActivity implements EventPrope
         mPostEventLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EvaluationCompleteActivity.mRecords.clear();
                 getQuestions("post");
                 mEventIntent = new Intent(getApplicationContext(), PostEventSurveyActivity.class);
             }
