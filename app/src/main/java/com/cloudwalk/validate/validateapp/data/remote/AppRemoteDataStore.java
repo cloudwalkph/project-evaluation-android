@@ -153,6 +153,7 @@ public class AppRemoteDataStore implements AppDataStore {
     public Observable<Record> saveAnswer(Record record) {
         Log.d("Remote Saving", "Saving answers remotely");
 
+        appLocalDataStore.saveRecordToDatabase(record);
         return retrofit.create(SaveRecordService.class).saveAnswer(record);
     }
 

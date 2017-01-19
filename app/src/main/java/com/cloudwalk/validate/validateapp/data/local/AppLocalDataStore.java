@@ -29,6 +29,10 @@ import com.cloudwalk.validate.validateapp.data.local.models.Question;
 import com.cloudwalk.validate.validateapp.data.local.models.QuestionStorIOContentResolverDeleteResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.QuestionStorIOContentResolverGetResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.QuestionStorIOContentResolverPutResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.Record;
+import com.cloudwalk.validate.validateapp.data.local.models.RecordStorIOContentResolverDeleteResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.RecordStorIOContentResolverGetResolver;
+import com.cloudwalk.validate.validateapp.data.local.models.RecordStorIOContentResolverPutResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeaderStorIOContentResolverDeleteResolver;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeaderStorIOContentResolverGetResolver;
@@ -57,6 +61,7 @@ public class AppLocalDataStore implements AppDataStore {
     private StorIOContentResolver mTeamLeaderStorIOContentResolver;
     private StorIOContentResolver mNegotiatorStorIOContentResolver;
     private StorIOContentResolver mAnswerStorIOContentResolver;
+    private StorIOContentResolver mRecordStorIOContentResolver;
 
     public AppLocalDataStore(@NonNull Context context) {
         this.mStorIOContentResolver = DefaultStorIOContentResolver.builder()
@@ -121,6 +126,15 @@ public class AppLocalDataStore implements AppDataStore {
                         .deleteResolver(new AnswerStorIOContentResolverDeleteResolver())
                         .build()
                 ).build();
+
+        this.mRecordStorIOContentResolver = DefaultStorIOContentResolver.builder()
+                .contentResolver(context.getContentResolver())
+                .addTypeMapping(Record.class, ContentResolverTypeMapping.<Record>builder()
+                        .putResolver(new RecordStorIOContentResolverPutResolver())
+                        .getResolver(new RecordStorIOContentResolverGetResolver())
+                        .deleteResolver(new RecordStorIOContentResolverDeleteResolver())
+                        .build()
+                ).build();
     }
 
     @Override
@@ -136,6 +150,10 @@ public class AppLocalDataStore implements AppDataStore {
 
     public void saveEmployeeToDatabase(List<Employee> employees) {
         mStorIOContentResolver.put().objects(employees).prepare().executeAsBlocking();
+    }
+
+    public void saveRecordToDatabase(Record record) {
+        mRecordStorIOContentResolver.put().object(record).prepare().executeAsBlocking();
     }
 
     public Observable<Event> getUserEvents(int eventId) {

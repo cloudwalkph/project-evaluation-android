@@ -31,6 +31,8 @@ public class Provider extends ContentProvider {
     private static final int NEGOTIATOR_DIR = 113;
     private static final int ANSWER_ITEM = 114;
     private static final int ANSWER_DIR = 115;
+    private static final int RECORD_ITEM = 116;
+    private static final int RECORD_DIR = 117;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
     private DatabaseHelper mDbHelper;
@@ -62,6 +64,9 @@ public class Provider extends ContentProvider {
 
         matcher.addURI(authority, AnswerDatabaseContract.PATH_ANSWER + "/#", ANSWER_ITEM);
         matcher.addURI(authority, AnswerDatabaseContract.PATH_ANSWER, ANSWER_DIR);
+
+        matcher.addURI(authority, RecordDatabaseContract.PATH_RECORD + "/#", RECORD_ITEM);
+        matcher.addURI(authority, RecordDatabaseContract.PATH_RECORD, RECORD_DIR);
 
         return matcher;
     }
@@ -253,6 +258,28 @@ public class Provider extends ContentProvider {
                         sortOrder
                 );
                 break;
+            case RECORD_DIR:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        RecordDatabaseContract.Record.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            case RECORD_ITEM:
+                retCursor = mDbHelper.getReadableDatabase().query(
+                        RecordDatabaseContract.Record.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown Uri " + uri);
         }
@@ -298,6 +325,10 @@ public class Provider extends ContentProvider {
                 return AnswerDatabaseContract.Answer.CONTENT_USER_ITEM_TYPE;
             case ANSWER_DIR:
                 return AnswerDatabaseContract.Answer.CONTENT_USER_TYPE;
+            case RECORD_ITEM:
+                return RecordDatabaseContract.Record.CONTENT_USER_ITEM_TYPE;
+            case RECORD_DIR:
+                return RecordDatabaseContract.Record.CONTENT_USER_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -373,6 +404,14 @@ public class Provider extends ContentProvider {
                     throw new SQLException("Answer Failed to insert row " + uri);
                 }
                 break;
+            case RECORD_DIR:
+                long record_id = db.insert(RecordDatabaseContract.Record.TABLE_NAME, null, contentValues);
+                if (record_id > 0) {
+                    returnUri = RecordDatabaseContract.Record.buildRecordUri(record_id);
+                } else {
+                    throw new SQLException("Record Failed to insert row " + uri);
+                }
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
         }
@@ -408,6 +447,9 @@ public class Provider extends ContentProvider {
                 break;
             case ANSWER_DIR:
                 rowsDeleted = db.delete(AnswerDatabaseContract.Answer.TABLE_NAME, selection, selectionArgs);
+                break;
+            case RECORD_DIR:
+                rowsDeleted = db.delete(RecordDatabaseContract.Record.TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);
@@ -446,6 +488,9 @@ public class Provider extends ContentProvider {
                 break;
             case ANSWER_DIR:
                 update = db.update(AnswerDatabaseContract.Answer.TABLE_NAME, values, selection, selectionArgs);
+                break;
+            case RECORD_DIR:
+                update = db.update(RecordDatabaseContract.Record.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown URI " + uri);

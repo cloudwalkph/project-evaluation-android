@@ -7,6 +7,7 @@ import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Negotiator;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.Record;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 import com.cloudwalk.validate.validateapp.data.remote.AppRemoteDataStore;
 
@@ -110,12 +111,7 @@ public class AppRepository implements AppDataStore {
 
     public Observable<Employee> attemptLogin(String email, String password) {
         return mAppLocalDataStore.attemptLogin(email, password)
-                .first(new Func1<Employee, Boolean>() {
-                    @Override
-                    public Boolean call(Employee employee) {
-                        return employee != null;
-                    }
-                });
+                .first();
     }
 
     public Observable<Question> getQuestionById(int questionId, String category) {
@@ -136,6 +132,11 @@ public class AppRepository implements AppDataStore {
                         return answer != null;
                     }
                 });
+    }
+
+    public Observable<Record> saveAnswer(Record record) {
+        return mAppRemoteDataStore.saveAnswer(record)
+                .first();
     }
 
     @Override

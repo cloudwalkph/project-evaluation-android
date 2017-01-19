@@ -27,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(TeamLeaderDatabaseContract.TeamLeader.getTeamLeaderCreateQuery());
         sqLiteDatabase.execSQL(NegotiatorDatabaseContract.Negotiator.getNegotiatorCreateQuery());
         sqLiteDatabase.execSQL(AnswerDatabaseContract.Answer.getAnswerCreateQuery());
+        sqLiteDatabase.execSQL(RecordDatabaseContract.Record.getRecordCreateQuery());
     }
 
     @Override
@@ -37,6 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(AssignmentDatabaseContract.Assignment.getAssignmentDeleteQuery());
         sqLiteDatabase.execSQL(TeamLeaderDatabaseContract.TeamLeader.getTeamLeaderDeleteQuery());
         sqLiteDatabase.execSQL(AnswerDatabaseContract.Answer.getAnswerDeleteQuery());
+        sqLiteDatabase.execSQL(RecordDatabaseContract.Record.getRecordDeleteQuery());
         onCreate(sqLiteDatabase);
     }
 }
