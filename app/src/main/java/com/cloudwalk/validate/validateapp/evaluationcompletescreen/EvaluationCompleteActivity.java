@@ -10,19 +10,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.cloudwalk.validate.validateapp.App;
 import com.cloudwalk.validate.validateapp.R;
+import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-public class EvaluationCompleteActivity extends AppCompatActivity {
+public class EvaluationCompleteActivity extends AppCompatActivity implements EvaluationCompleteContract.View {
 
     public static String completeLabel;
     public static Button mHomeButton;
     public static Button mExitButton;
     @Bind(R.id.label_finish) TextView mEvaluationCompleteLabel;
+
+    private EvaluationCompleteContract.Presenter mPresenter;
+
+    @Inject
+    AppRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,9 @@ public class EvaluationCompleteActivity extends AppCompatActivity {
         setTitle("Evalutation Completed");
 
         ButterKnife.bind(this);
+
+        App.getAppComponent().inject(this);
+        new EvaluationCompletePresenter(repository, this);
 
         mEvaluationCompleteLabel.setText(completeLabel);
 
@@ -74,5 +86,22 @@ public class EvaluationCompleteActivity extends AppCompatActivity {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
+
+    @Override
+    public void setPresenter(EvaluationCompleteContract.Presenter presenter) {
+        this.mPresenter = mPresenter;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.subscribe();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mPresenter.unsubscribe();
+    }
 
 }

@@ -4,6 +4,7 @@ import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionFragment;
 import com.cloudwalk.validate.validateapp.dagger.module.AppModule;
 import com.cloudwalk.validate.validateapp.dagger.module.DataModule;
 import com.cloudwalk.validate.validateapp.data.remote.AppRemoteDataStore;
+import com.cloudwalk.validate.validateapp.evaluationcompletescreen.EvaluationCompleteActivity;
 import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 import com.cloudwalk.validate.validateapp.loginscreen.LoginActivity;
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
@@ -24,6 +25,7 @@ public interface AppComponent {
     void inject(SplashActivity activity);
     void inject(LoginActivity activity);
     void inject(EventProperActivity activity);
+    void inject(EvaluationCompleteActivity activity);
     void inject(QuestionFragment fragment);
     void inject(AppRemoteDataStore appRemoteDataStore);
 }
