@@ -11,6 +11,7 @@ import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Event;
 import com.cloudwalk.validate.validateapp.data.local.models.Negotiator;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.Record;
 import com.cloudwalk.validate.validateapp.data.local.models.TeamLeader;
 
 import java.util.List;
@@ -19,7 +20,9 @@ import javax.inject.Inject;
 
 import dagger.Component;
 import retrofit2.Retrofit;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -147,6 +150,12 @@ public class AppRemoteDataStore implements AppDataStore {
         });
     }
 
+    public Observable<Record> saveAnswer(Record record) {
+        Log.d("Remote Saving", "Saving answers remotely");
+
+        return retrofit.create(SaveRecordService.class).saveAnswer(record);
+    }
+
     private interface AnswerService {
         @GET("/admin/getAllAnswer")
         Observable<List<Answer>> getAnswerList();
@@ -155,6 +164,11 @@ public class AppRemoteDataStore implements AppDataStore {
     private interface NegotiatorService {
         @GET("/admin/getAllNego")
         Observable<List<Negotiator>> getNegotiatorList();
+    }
+
+    private interface SaveRecordService {
+        @POST("/admin/saveRecord")
+        Observable<Record> saveAnswer(@Body Record record);
     }
 
 }
