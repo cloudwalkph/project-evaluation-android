@@ -3,6 +3,7 @@ package com.cloudwalk.validate.validateapp.QuestionScreen;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,13 @@ import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Answer;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.Record;
+import com.cloudwalk.validate.validateapp.evaluationcompletescreen.EvaluationCompleteActivity;
+import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -42,6 +47,8 @@ public class QuestionFragment extends Fragment implements QuestionContract.View 
 
     @Inject
     AppRepository repository;
+
+    public Question question;
 
     @Bind(R.id.question_details) TextView mQuestion;
 
@@ -76,7 +83,7 @@ public class QuestionFragment extends Fragment implements QuestionContract.View 
         ll = (LinearLayout)v.findViewById(R.id.linear_layout_answer);
 
         if (QuestionFragment.mQuestions.size() > 0) {
-            Question question = QuestionFragment.mQuestions.get(mPosition);
+            question = QuestionFragment.mQuestions.get(mPosition);
             mQuestion.setText(question.getQname());
 
             // get the list of answers
@@ -101,11 +108,54 @@ public class QuestionFragment extends Fragment implements QuestionContract.View 
             RadioButton rb = new RadioButton(this.getContext());
 
             rb.setText(answer.getContent());
+            rb.setId((int) answer.getId());
             rb.setTextSize(18);
             rb.setPadding(5, 10, 5, 10);
             mRadioGroup.addView(rb);
         }
         ll.addView(mRadioGroup);
+
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                int radioButtonID = group.getCheckedRadioButtonId();
+                Log.d("SELECT ANSWER", String.valueOf(radioButtonID));
+
+                createOrUpdateRecord(radioButtonID);
+            }
+        });
+    }
+
+    private int recordExists(Record record) {
+        for (int i = 0; i < EvaluationCompleteActivity.mRecords.size(); i++) {
+            if (record.getQuestionId().equals(EvaluationCompleteActivity.mRecords.get(i).getQuestionId()) &&
+                    record.getEventId().equals(EvaluationCompleteActivity.mRecords.get(i).getEventId())) {
+
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    private void createOrUpdateRecord(int answerId) {
+        Random random = new Random(System.nanoTime());
+        int randomInt = random.nextInt(1000000000);
+
+        String eventId = String.valueOf(EventProperActivity.mCurrentEvent.getId());
+        String category = question.getQcat();
+        String questionId = String.valueOf(question.getId());
+        String answer = String.valueOf(answerId);
+
+        Record record = new Record(randomInt, eventId, category, eventId, questionId, answer, "", "");
+
+        int existing = recordExists(record);
+        if (existing >= 0) {
+            EvaluationCompleteActivity.mRecords.remove(existing);
+        }
+
+        EvaluationCompleteActivity.mRecords.add(record);
     }
 
     @Override
