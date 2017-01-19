@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenContrac
         // Not found, add the event
         if (! found) {
             eventList.add(event);
+            adapter.notifyDataSetChanged();
         }
     }
 
