@@ -44,11 +44,17 @@ public class LoginScreenPresenter implements LoginScreenContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         Log.d("LOGIN", e.toString());
+                        mView.loginFailed();
                         e.printStackTrace();
                     }
 
                     @Override
                     public void onNext(Employee employee) {
+                        Log.d("LOGIN", employee.toString());
+//                        if (employee == null) {
+//                            mView.loginFailed();
+//                            return;
+//                        }
                         mCurrentEmployee = employee;
                     }
                 });

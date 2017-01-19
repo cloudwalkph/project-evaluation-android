@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity
         new LoginScreenPresenter(repository, this);
 
         pd = new ProgressDialog(LoginActivity.this);
-        pd.hide();
+        pd.setCancelable(false);
         initSigninButton();
     }
 
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity
 
     @Override
     public void loginComplete() {
-        pd.hide();
+        pd.dismiss();
 
         Log.i("Login", String.valueOf(LoginScreenPresenter.mCurrentEmployee.getId()));
 
@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity
     @Override
     public void loginFailed() {
         pd.hide();
+        pd.dismiss();
         Toast.makeText(this, "Invalid username/password", Toast.LENGTH_SHORT).show();
     }
 
