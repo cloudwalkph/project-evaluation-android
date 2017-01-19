@@ -6,6 +6,7 @@ import com.cloudwalk.validate.validateapp.QuestionScreen.QuestionFragment;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
 import com.cloudwalk.validate.validateapp.data.local.models.Employee;
 import com.cloudwalk.validate.validateapp.data.local.models.Question;
+import com.cloudwalk.validate.validateapp.data.local.models.Record;
 import com.cloudwalk.validate.validateapp.eventproperscreen.EventProperContract;
 
 import rx.Observer;
@@ -42,4 +43,27 @@ public class EvaluationCompletePresenter implements EvaluationCompleteContract.P
     }
 
 
+    @Override
+    public void saveRecord(Record record) {
+        mSubscription = mAppRepository.saveAnswer(record)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<Record>() {
+                    @Override
+                    public void onCompleted() {
+                        mView.saveRecordComplete();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+
+                    }
+
+                    @Override
+                    public void onNext(Record record) {
+                        Log.i("ANSWER SAVED: ", record.getAnswerId());
+                    }
+                });
+    }
 }

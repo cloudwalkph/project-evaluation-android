@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +14,11 @@ import android.widget.TextView;
 import com.cloudwalk.validate.validateapp.App;
 import com.cloudwalk.validate.validateapp.R;
 import com.cloudwalk.validate.validateapp.data.AppRepository;
+import com.cloudwalk.validate.validateapp.data.local.models.Record;
 import com.cloudwalk.validate.validateapp.mainscreen.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -27,6 +32,8 @@ public class EvaluationCompleteActivity extends AppCompatActivity implements Eva
     public static Button mHomeButton;
     public static Button mExitButton;
     @Bind(R.id.label_finish) TextView mEvaluationCompleteLabel;
+
+    public static List<Record> mRecords = new ArrayList<Record>();
 
     private EvaluationCompleteContract.Presenter mPresenter;
 
@@ -50,6 +57,7 @@ public class EvaluationCompleteActivity extends AppCompatActivity implements Eva
         mHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EvaluationCompleteActivity.mRecords.clear();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -79,6 +87,15 @@ public class EvaluationCompleteActivity extends AppCompatActivity implements Eva
             }
         });
 
+        this.saveAnswers();
+
+    }
+
+    private void saveAnswers() {
+        for (int i = 0; i < EvaluationCompleteActivity.mRecords.size(); i++) {
+            Log.i("ANSWER", EvaluationCompleteActivity.mRecords.get(i).getAnswerId());
+            mPresenter.saveRecord(EvaluationCompleteActivity.mRecords.get(i));
+        }
     }
 
     @Override
@@ -89,7 +106,7 @@ public class EvaluationCompleteActivity extends AppCompatActivity implements Eva
 
     @Override
     public void setPresenter(EvaluationCompleteContract.Presenter presenter) {
-        this.mPresenter = mPresenter;
+        this.mPresenter = presenter;
     }
 
     @Override
@@ -104,4 +121,8 @@ public class EvaluationCompleteActivity extends AppCompatActivity implements Eva
         mPresenter.unsubscribe();
     }
 
+    @Override
+    public void saveRecordComplete() {
+
+    }
 }
